@@ -436,6 +436,94 @@ footer { border-top: 1px solid var(--line-soft); padding: 50px 0 40px; position:
 
 /* lang visibility helpers */
 [data-en], [data-mm] { display: inline; }
+
+/* ============================================================
+   MOBILE RESPONSIVE
+   ============================================================ */
+
+/* ---------- BURGER (hidden on desktop) ---------- */
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: none; padding: 4px; z-index: 210;
+}
+.nav-burger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- 768px (tablet / small laptop) ---------- */
+@media (max-width: 860px) {
+  .nav-links {
+    position: fixed; top: 0; right: -100%; width: 260px; height: 100vh;
+    flex-direction: column; gap: 0; padding: 80px 30px 30px;
+    background: rgba(10,10,15,0.96); backdrop-filter: blur(20px);
+    border-left: 1px solid var(--line);
+    transition: right .35s cubic-bezier(.4,0,.2,1); z-index: 205;
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a { font-size: 1rem; padding: 16px 0; border-bottom: 1px solid var(--line-soft); width: 100%; }
+  .nav-links a::after { display: none; }
+  .nav-burger { display: flex; }
+  body.nav-open { overflow: hidden; }
+  section { padding: 70px 0; }
+  .foot-grid { flex-direction: column; text-align: center; gap: 16px; }
+}
+
+/* ---------- 600px (large phone) ---------- */
+@media (max-width: 600px) {
+  .wrap { padding: 0 18px; }
+  #hero { padding-top: 90px; padding-bottom: 60px; min-height: auto; }
+  .hero h1 { font-size: clamp(1.8rem, 10vw, 2.6rem); }
+  .hero-sub { font-size: 0.95rem; }
+  .hero-btns { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .hero-btns .btn { width: 100%; justify-content: center; }
+  .h2 { font-size: clamp(1.5rem, 7vw, 2rem); margin-bottom: 12px; }
+  .lead { font-size: 0.92rem; }
+  section { padding: 50px 0; }
+  .eyebrow { font-size: 0.7rem; }
+  #termCard .term-body { height: 240px; font-size: 0.78rem; }
+  .stat-row { gap: 20px; }
+  .stat .n { font-size: 1.5rem; }
+  .stat .l { font-size: 0.7rem; }
+  .proj-grid { grid-template-columns: 1fr; gap: 16px; }
+  .proj-card { min-height: auto; padding: 20px; }
+  .proj-card:hover { transform: none; }
+  .proj-name { font-size: 1rem; }
+  .proj-desc { font-size: 0.84rem; }
+  .feat-left, .feat-right { padding: 24px 18px !important; }
+  .feat-left h3 { font-size: 1.3rem; }
+  .contact-body { padding: 18px; }
+  .contact-body .term-line { font-size: 0.78rem; }
+  .contact-links { flex-direction: column; align-items: center; }
+  .contact-links .btn { width: 100%; justify-content: center; }
+  .gh-panel { padding: 18px; }
+  .feed-ico { width: 28px; height: 28px; }
+  .feed-ico svg { width: 13px; height: 13px; }
+  .feed-name { font-size: 0.85rem; }
+  .contrib { gap: 2px; }
+  .skill-cats { grid-template-columns: 1fr; }
+  .skill-cat { padding: 18px; }
+  .skill-tags span { font-size: 0.73rem; padding: 5px 10px; }
+  .scroll-ind { display: none; }
+  footer { padding: 36px 0 28px; }
+  .foot-grid { gap: 12px; }
+  .to-top { width: 38px; height: 38px; }
+  .boot-center .boot-logo { font-size: 2.2rem; }
+  .boot-sub { font-size: 0.8rem; }
+}
+
+/* ---------- 400px (small phone) ---------- */
+@media (max-width: 400px) {
+  .wrap { padding: 0 14px; }
+  .h2 { font-size: clamp(1.3rem, 6vw, 1.6rem); }
+  .term-body { padding: 14px; }
+  .feat-features { padding-left: 0; }
+  .feat-features li { font-size: 0.82rem; padding: 6px 0; }
+}
 </style>
 </head>
 <body>
@@ -1034,10 +1122,10 @@ footer { border-top: 1px solid var(--line-soft); padding: 50px 0 40px; position:
   });
   const burger = $('#burger'), navLinks = $('#navLinks');
   burger.addEventListener('click', () => {
-    burger.classList.toggle('open'); navLinks.classList.toggle('open');
+    burger.classList.toggle('open'); navLinks.classList.toggle('open'); document.body.classList.toggle('nav-open');
   });
   $$('[data-link]').forEach(a => a.addEventListener('click', () => {
-    burger.classList.remove('open'); navLinks.classList.remove('open');
+    burger.classList.remove('open'); navLinks.classList.remove('open'); document.body.classList.remove('nav-open');
   }));
 
   /* ---------- 11a. COPY EMAIL TO CLIPBOARD ---------- */
