@@ -1,0 +1,56 @@
+Htet Min Paing
+Yangon, Myanmar
+09 970 980 251
+htetminpaing.96@gmail.com
+linkedin.com/in/htetminpaing-it
+github.com/htet1996
+
+────────────────────────────────────────
+COVER LETTER
+────────────────────────────────────────
+
+[Date]
+
+[Hiring Manager's Name]
+[Company Name]
+[Company Address]
+[City, Country]
+
+Dear Hiring Manager,
+
+I am writing to apply for the [Job Title] position at [Company Name]. Over the past 8+ years I have built a career across the full breadth of IT — from technical support, networking, and hardware to full-stack development and UI/UX design — and I bring a rare combination of operational reliability and hands-on product-building to every team I join.
+
+Most recently, as a freelance Full-Stack Developer, I have owned products end to end for the Myanmar market: gathering requirements, designing the architecture, writing the code, and deploying and maintaining it in production. I built a VPN Commerce Bot that automates purchasing, user management, and payments, and a Finance & Crypto Bot that delivers real-time portfolio tracking and cryptocurrency monitoring — both powered by Python and SQLite on the Telegram Bot API.
+
+This development work is grounded in years of enterprise IT experience. As an IT Technician at HTOO Group of Companies, one of Myanmar's largest conglomerates, I provided technical support across the organization, maintained network infrastructure, and resolved hardware and software issues for users in multiple departments. Earlier roles — Computer Service Technician at Citicom IT and Mobile, CCTV Installation Specialist at NS CCTV and Networking Group, and Sales & Marketing Executive at Shwin Chan Trading — gave me a practical, business-first understanding of how technology actually serves people.
+
+Alongside my bot work, I build modern web applications. Selected projects include:
+
+— SagaNote — an AI Voice-to-Notion SaaS that records meetings, transcribes and translates them to Burmese, and saves the minutes automatically. Built with Next.js, Supabase, and Gemini AI.
+— VPN Commerce Bot — a Telegram-based VPN service platform with automated commerce, built with Python and SQLite.
+— Finance & Crypto Bot — a real-time financial tracking and cryptocurrency monitoring bot for Telegram.
+
+I am continually deepening my skills in React.js, Next.js, Python, and UI/UX design. I am confident that my blend of dependable IT operations and a proven ability to ship real software would let me contribute to [Company Name] from day one, and I would welcome the chance to grow with your team.
+
+Thank you for your time and consideration. I would be glad to discuss how my experience can support your goals.
+
+Sincerely,
+
+Htet Min Paing
+
+────────────────────────────────────────
+APPLICATION TIPS
+────────────────────────────────────────
+
+→ Fill in [bracketed] placeholders before sending:
+  • Date (e.g., "June 16, 2026")
+  • Hiring Manager's Name (check company website or LinkedIn)
+  • Company Name
+  • Company Address (optional)
+  • Job Title
+  • Reason you're interested in that specific company
+
+→ Attach resume.html as PDF: open in browser → File → Print → Save as PDF
+→ Send via LinkedIn Easy Apply, email, or company portal
+
+────────────────────────────────────────
