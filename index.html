@@ -185,7 +185,7 @@ a { color: inherit; text-decoration: none; }
 #projects.revealed { animation: projFlash 1.1s ease; }
 @keyframes projFlash { 0% { background: rgba(79, 140, 255, 0); } 25% { background: rgba(79, 140, 255, .05); } 100% { background: rgba(79, 140, 255, 0); } }
 @media (max-width: 720px) {
-  #pullCord .cord { height: calc(64px + var(--pull, 0px)); }
+  #pullCord .cord { height: calc(92px + var(--pull, 0px)); }
   #pullCord .cord-knob { padding: 10px 14px; font-size: 0.56rem; gap: 5px; }
   #pullCord .knob-ico svg { width: 16px; height: 16px; }
 }
@@ -379,9 +379,10 @@ nav.scrolled {
 .cv-item-desc { font-size: 0.85rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
 @media (max-width: 720px) {
   .cv-inner { grid-template-columns: 1fr; }
-  .cv-left { border-right: none; border-bottom: 1px solid var(--line-soft); padding: 28px 20px; }
-  .cv-right { padding: 24px 20px; }
-  .cv-links { flex-direction: row; }
+  .cv-left { border-right: none; border-bottom: 1px solid var(--line-soft); padding: 28px 20px; min-width: 0; }
+  .cv-right { padding: 24px 20px; min-width: 0; }
+  .cv-links { flex-direction: row; flex-wrap: wrap; }
+  .cv-links .btn { flex: 1 1 auto; justify-content: center; }
 }
 
 /* device mockup */
@@ -1605,7 +1606,11 @@ footer { border-top: 1px solid var(--line-soft); padding: 50px 0 40px; position:
       if (e.type === 'mousedown') e.preventDefault();
       dragging = true; moved = false; startY = getY(e); wrap.classList.add('grabbing');
     }
-    function move(e) { if (!dragging) return; const d = getY(e) - startY; if (d > 4) moved = true; setPull(d); }
+    function move(e) {
+      if (!dragging) return;
+      if (e.cancelable) e.preventDefault();   // stop the page scrolling while you pull (mobile)
+      const d = getY(e) - startY; if (d > 4) moved = true; setPull(d);
+    }
     function up() {
       if (!dragging) return; dragging = false; wrap.classList.remove('grabbing');
       if (pull >= THRESH) reveal();
@@ -1620,8 +1625,8 @@ footer { border-top: 1px solid var(--line-soft); padding: 50px 0 40px; position:
     knob.addEventListener('mousedown', down);
     window.addEventListener('mousemove', move);
     window.addEventListener('mouseup', up);
-    knob.addEventListener('touchstart', down, { passive: true });
-    window.addEventListener('touchmove', move, { passive: true });
+    knob.addEventListener('touchstart', down, { passive: false });
+    window.addEventListener('touchmove', move, { passive: false });
     window.addEventListener('touchend', up);
     knob.addEventListener('click', e => { e.preventDefault(); if (!moved) reveal(); });
     // only show at the top — tuck it away once scrolled past the hero
