@@ -184,7 +184,11 @@ a { color: inherit; text-decoration: none; }
 }
 #projects.revealed { animation: projFlash 1.1s ease; }
 @keyframes projFlash { 0% { background: rgba(79, 140, 255, 0); } 25% { background: rgba(79, 140, 255, .05); } 100% { background: rgba(79, 140, 255, 0); } }
-@media (max-width: 720px) { #pullCord { display: none; } }
+@media (max-width: 720px) {
+  #pullCord .cord { height: calc(64px + var(--pull, 0px)); }
+  #pullCord .cord-knob { padding: 10px 14px; font-size: 0.56rem; gap: 5px; }
+  #pullCord .knob-ico svg { width: 16px; height: 16px; }
+}
 /* ============================================================
    NAV
    ============================================================ */
@@ -567,7 +571,7 @@ nav.scrolled {
 .bizcard::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(var(--accent), var(--accent2)); z-index: 2; }
 .bizcard-photo { position: relative; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; min-height: 200px; }
 .bizcard-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-.bizcard-photo .bc-initials { font-family: var(--mono); font-weight: 800; font-size: 3.4rem; color: #fff; }
+.bizcard-photo .bc-initials { display: none; font-family: var(--mono); font-weight: 800; font-size: 3.4rem; color: #fff; }
 .bizcard-info { padding: 24px 26px; display: flex; flex-direction: column; justify-content: center; }
 .bizcard-info .bc-name { font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em; }
 .bizcard-info .bc-role { font-family: var(--mono); font-size: 0.76rem; color: var(--accent); margin-bottom: 16px; }
@@ -1058,7 +1062,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 50px 0 40px; position:
       <div class="bizcard-photo">
         <span class="bc-initials">N</span>
         <img src="profile.jpg" alt="Htet Min Paing" loading="lazy"
-             onerror="this.style.display='none'" />
+             onerror="this.style.display='none';this.previousElementSibling.style.display='block'" />
       </div>
       <div class="bizcard-info">
         <div class="bc-name">Htet Min Paing</div>
