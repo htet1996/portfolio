@@ -1,1648 +1,531 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Nikko — Htet Min Paing · Full Stack Developer</title>
-<meta name="description" content="Htet Min Paing (Nikko) — Myanmar full-stack developer. Building SagaNote: AI Voice → Notion for the Myanmar market." />
-<meta name="author" content="Htet Min Paing" />
-<meta name="theme-color" content="#0b0d15" />
-<link rel="canonical" href="https://nikkoportfolio.vercel.app/" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikko — Htet Min Paing · Full Stack Developer</title>
+  <meta name="description" content="Htet Min Paing (Nikko) — Myanmar full-stack developer. Building SagaNote: AI Voice → Notion for the Myanmar market." />
+  <meta name="author" content="Htet Min Paing" />
+  <meta name="theme-color" content="#0b0d15" />
+  <link rel="canonical" href="https://nikkoportfolio.vercel.app/" />
 
-<!-- ============ FAVICON ============ -->
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <!-- ============ FAVICON ============ -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
-<!-- ============ OPEN GRAPH / SOCIAL ============ -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://nikkoportfolio.vercel.app/" />
-<meta property="og:title" content="Htet Min Paing (Nikko) — Full Stack Developer" />
-<meta property="og:description" content="Myanmar full-stack developer building AI products. Flagship: SagaNote — AI Voice → Notion." />
-<meta property="og:image" content="https://nikkoportfolio.vercel.app/og.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Htet Min Paing (Nikko) — Full Stack Developer" />
-<meta name="twitter:description" content="Myanmar full-stack developer building AI products. Flagship: SagaNote — AI Voice → Notion." />
-<meta name="twitter:image" content="https://nikkoportfolio.vercel.app/og.png" />
+  <!-- ============ OPEN GRAPH / SOCIAL ============ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nikkoportfolio.vercel.app/" />
+  <meta property="og:title" content="Htet Min Paing (Nikko) — Full Stack Developer" />
+  <meta property="og:description" content="Myanmar full-stack developer building AI products. Flagship: SagaNote — AI Voice → Notion." />
+  <meta property="og:image" content="https://nikkoportfolio.vercel.app/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Htet Min Paing (Nikko) — Full Stack Developer" />
+  <meta name="twitter:description" content="Myanmar full-stack developer building AI products. Flagship: SagaNote — AI Voice → Notion." />
+  <meta name="twitter:image" content="https://nikkoportfolio.vercel.app/assets/og.png" />
 
-<!-- ============ FONTS ============ -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- ============ FONTS ============ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-<!-- ============ THREE.JS (CDN) ============ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- ============ STYLES ============ -->
+  <link rel="stylesheet" href="css/style.css" />
 
-<style>
-/* ============================================================
-   Nikko PORTFOLIO — "where terminal meets visual art"
-   Author: Htet Min Paing (Nikko)
-   Single-file build. All CSS + JS inline.
-   ============================================================ */
-
-/* ---------- DESIGN TOKENS ---------- */
-:root {
-  --bg:        #0b0d15;
-  --bg-soft:   #0f1119;
-  --panel:     #13151f;
-  --panel-2:   #16182400;
-  --line:      rgba(79, 140, 255, 0.12);
-  --line-soft: rgba(255, 255, 255, 0.06);
-  --accent:    #4f8cff;
-  --accent2:   #7c5cfc;
-  --text:      #e8ecf4;
-  --muted:     #8b93a7;
-  --dim:       #5a6072;
-  --glow:      0 0 20px rgba(79, 140, 255, 0.35);
-  --glow2:     0 0 20px rgba(124, 92, 252, 0.30);
-  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --maxw: 1180px;
-}
-
-/* ---------- RESET ---------- */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-img { max-width: 100%; display: block; }
-a { color: inherit; text-decoration: none; }
-::selection { background: rgba(79, 140, 255, 0.25); color: #fff; }
-
-/* ---------- SCROLLBAR ---------- */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #07070b; }
-::-webkit-scrollbar-thumb { background: linear-gradient(var(--accent), var(--accent2)); border-radius: 10px; }
-
-/* ============================================================
-   BOOT SCREEN
-   ============================================================ */
-#boot {
-  position: fixed; inset: 0; z-index: 9999;
-  background: #000;
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column;
-  transition: opacity 0.9s ease, visibility 0.9s ease;
-}
-#boot.done { opacity: 0; visibility: hidden; pointer-events: none; }
-.boot-center { position: relative; z-index: 2; text-align: center; }
-.boot-logo {
-  font-family: var(--mono); font-weight: 700;
-  font-size: clamp(3.5rem, 14vw, 9rem); letter-spacing: 0.05em;
-  color: var(--accent); text-shadow: var(--glow);
-  opacity: 0; transform: scale(0.85);
-  animation: bootLogo 0.9s 0.15s cubic-bezier(.2,.9,.2,1) forwards;
-}
-.boot-logo .o { color: var(--accent2); text-shadow: var(--glow2); }
-.boot-sub {
-  margin-top: 1rem; font-family: var(--mono); font-size: 0.8rem;
-  color: var(--muted); letter-spacing: 0.35em; text-transform: uppercase;
-  opacity: 0; animation: fadeIn 0.6s 0.7s forwards;
-}
-.boot-skip {
-  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em;
-  color: var(--dim); text-transform: uppercase; opacity: 0;
-  animation: fadeIn 0.6s 1s forwards; cursor: pointer;
-}
-.boot-skip:hover { color: var(--accent); }
-@keyframes bootLogo { to { opacity: 1; transform: scale(1); } }
-@keyframes fadeIn  { to { opacity: 1; } }
-
-/* ============================================================
-   3D PARTICLE BACKGROUND
-   ============================================================ */
-#bg3d { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-/* colored glow that follows the cursor */
-#cursorGlow {
-  position: fixed; inset: 0; z-index: 1; pointer-events: none;
-  background: radial-gradient(
-    480px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(124, 92, 252, 0.12),
-    rgba(79, 140, 255, 0.07) 36%,
-    transparent 62%
-  );
-  transition: background .2s ease-out;
-}
-@media (prefers-reduced-motion: reduce) { #cursorGlow { display: none; } }
-
-/* ============================================================
-   PULL-CORD → reveal projects
-   ============================================================ */
-#pullCord {
-  position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 150;
-  pointer-events: none;
-  transition: opacity .45s ease, transform .45s ease, visibility .45s;
-}
-/* tuck away once you scroll past the hero — only lives at the top */
-#pullCord.tucked { opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(-30px); }
-#pullCord .cord-inner {
-  display: flex; flex-direction: column; align-items: center;
-  transform-origin: top center;
-}
-/* ease-in-out per swing = natural pendulum (slow at the ends, fast through the middle) */
-#pullCord .cord-inner.swaying { animation: cordSettle 4.6s ease-in-out both; }
-#pullCord.grabbing .cord-inner { animation: none; }
-#pullCord .cord {
-  width: 2px; height: calc(120px + var(--pull, 0px));
-  background: linear-gradient(var(--accent2), var(--accent));
-  box-shadow: 0 0 10px rgba(124, 92, 252, .5);
-  transition: height .6s cubic-bezier(.34, 1.56, .64, 1);
-}
-#pullCord.grabbing .cord { transition: none; }
-#pullCord .cord-knob {
-  pointer-events: auto; cursor: grab; margin-top: -2px;
-  background: rgba(19, 21, 31, .92); backdrop-filter: blur(8px);
-  border: 1px solid var(--line); border-radius: 16px;
-  padding: 15px 20px; display: flex; flex-direction: column; align-items: center; gap: 7px;
-  font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; line-height: 1.3;
-  text-transform: uppercase; color: var(--muted); text-align: center;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, .5);
-  transition: transform .15s, box-shadow .25s, border-color .25s, color .25s;
-}
-#pullCord .cord-knob:hover { color: var(--text); border-color: var(--accent); box-shadow: 0 0 22px rgba(79, 140, 255, .3); transform: translateY(2px); }
-#pullCord.grabbing .cord-knob { cursor: grabbing; }
-#pullCord .knob-ico { color: var(--accent); display: flex; }
-#pullCord .knob-ico svg { width: 20px; height: 20px; }
-/* natural damped pendulum — each keyframe sits at a swing extreme (velocity 0),
-   ease-in-out carries it smoothly through the centre, amplitude decays ~0.7x */
-@keyframes cordSettle {
-  0%   { transform: rotate(0deg); }
-  9%   { transform: rotate(17deg); }
-  23%  { transform: rotate(-12deg); }
-  37%  { transform: rotate(8.5deg); }
-  51%  { transform: rotate(-6deg); }
-  65%  { transform: rotate(4deg); }
-  79%  { transform: rotate(-2.5deg); }
-  91%  { transform: rotate(1.3deg); }
-  100% { transform: rotate(0deg); }
-}
-#projects.revealed { animation: projFlash 1.1s ease; }
-@keyframes projFlash { 0% { background: rgba(79, 140, 255, 0); } 25% { background: rgba(79, 140, 255, .05); } 100% { background: rgba(79, 140, 255, 0); } }
-@media (max-width: 720px) {
-  #pullCord .cord { height: calc(92px + var(--pull, 0px)); }
-  #pullCord .cord-knob { padding: 10px 14px; font-size: 0.56rem; gap: 5px; }
-  #pullCord .knob-ico svg { width: 16px; height: 16px; }
-}
-/* ============================================================
-   NAV
-   ============================================================ */
-
-/* ============================================================
-   LAYOUT
-   ============================================================ */
-main { position: relative; z-index: 2; }
-.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
-section { position: relative; padding: 110px 0; }
-
-.eyebrow {
-  font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
-  display: inline-flex; align-items: center; gap: 10px;
-}
-.eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--accent); display: inline-block; }
-.h2 {
-  font-size: clamp(1.9rem, 5vw, 3.2rem); font-weight: 800;
-  line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 18px;
-}
-.lead { color: var(--muted); max-width: 620px; font-size: 1.02rem; }
-.grad-text { background: linear-gradient(100deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-
-/* ---------- NAV ---------- */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px max(24px, calc((100vw - var(--maxw))/2 + 24px));
-  transition: background .3s, border-color .3s, padding .3s;
-  border-bottom: 1px solid transparent;
-}
-nav.scrolled {
-  background: rgba(10,10,15,0.72); backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line); padding-top: 12px; padding-bottom: 12px;
-}
-.brand { font-family: var(--mono); font-weight: 700; font-size: 1.15rem; letter-spacing: .02em; display: flex; align-items: center; gap: 8px; }
-.brand .o { color: var(--accent2); }
-.brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent2); box-shadow: var(--glow2); animation: pulse 1.8s infinite; }
-@keyframes pulse { 0%,100% { opacity:1; transform: scale(1);} 50% { opacity:.4; transform: scale(.7);} }
-.nav-links { display: flex; align-items: center; gap: 26px; }
-.nav-links a { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); transition: color .2s; position: relative; }
-.nav-links a::after { content:''; position:absolute; left:0; bottom:-4px; width:0; height:1px; background: var(--accent); transition: width .25s; }
-.nav-links a:hover { color: var(--text); } .nav-links a:hover::after { width: 100%; }
-.nav-links a.active { color: var(--text); }
-.nav-links a.active::after { width: 100%; }
-
-/* scroll progress bar */
-#scrollProgress {
-  position: fixed; top: 0; left: 0; height: 2px; width: 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  z-index: 300; box-shadow: 0 0 10px rgba(79,140,255,.6);
-  transition: width .1s linear;
-}
-
-/* ---------- BUTTONS ---------- */
-.btn {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--mono); font-size: 0.86rem; font-weight: 500;
-  padding: 12px 20px; border-radius: 10px;
-  border: 1px solid var(--line); color: var(--text);
-  background: rgba(79,140,255,0.05); transition: all .22s; white-space: nowrap;
-}
-.btn:hover { transform: translateY(-2px); box-shadow: var(--glow); border-color: var(--accent); }
-.btn-primary { background: linear-gradient(100deg, rgba(79,140,255,.16), rgba(124,92,252,.16)); border-color: var(--accent); color: #fff; }
-.btn-primary:hover { box-shadow: 0 8px 30px rgba(79,140,255,0.3); }
-.btn svg { width: 16px; height: 16px; }
-
-/* ============================================================
-   HERO
-   ============================================================ */
-#hero { min-height: 100vh; display: flex; align-items: center; padding-top: 120px; }
-.hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 50px; align-items: center; width: 100%; }
-.hero-tag {
-  font-family: var(--mono); font-size: 0.8rem; color: var(--accent2);
-  letter-spacing: .25em; text-transform: uppercase; margin-bottom: 22px;
-  display: inline-flex; align-items: center; gap: 10px;
-}
-.hero-tag .blip { width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); box-shadow: var(--glow2); animation: pulse 1.6s infinite; }
-.hero h1 {
-  font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 900; line-height: 1.02;
-  letter-spacing: -0.03em; margin-bottom: 8px;
-}
-.hero h1 .grad-text { display: inline-block; }
-.hero-sub { font-size: 1.1rem; color: var(--muted); margin-bottom: 8px; }
-.hero-cta { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; }
-
-/* ---------- TERMINAL ---------- */
-.terminal {
-  background: rgba(8,9,14,0.92); border: 1px solid var(--line);
-  border-radius: 14px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.5), inset 0 0 60px rgba(79,140,255,0.02);
-  font-family: var(--mono);
-}
-.term-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--line-soft); }
-.term-dot { width: 12px; height: 12px; border-radius: 50%; }
-.term-dot.r { background: #ff5f56; } .term-dot.y { background: #ffbd2e; } .term-dot.g { background: #27c93f; }
-.term-title { margin-left: 10px; font-size: 0.74rem; color: var(--dim); letter-spacing: .05em; }
-.term-body {
-  padding: 18px; height: 320px; overflow-y: auto; font-size: 0.86rem; line-height: 1.75;
-}
-.term-body::-webkit-scrollbar { width: 6px; }
-.term-line { white-space: pre-wrap; word-break: break-word; }
-.term-line .c { color: var(--accent); } .term-line .e { color: var(--accent2); }
-.term-line .m { color: var(--muted); } .term-line .w { color: #ffbd2e; }
-.term-line .err { color: #ff6b6b; }
-.term-prompt { color: var(--accent2); }
-.term-inline { display: flex; align-items: center; gap: 8px; }
-.term-input {
-  flex: 1; background: none; border: none; outline: none;
-  color: var(--text); font-family: var(--mono); font-size: 0.86rem; caret-color: var(--accent);
-}
-.cursor-blink { display: inline-block; width: 9px; height: 1.05em; background: var(--accent); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-
-/* ---------- SCROLL INDICATOR ---------- */
-.scroll-ind { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--dim); font-family: var(--mono); font-size: 0.68rem; letter-spacing: .25em; }
-.scroll-mouse { width: 22px; height: 34px; border: 1.5px solid var(--dim); border-radius: 12px; display: flex; justify-content: center; padding-top: 6px; }
-.scroll-mouse span { width: 3px; height: 7px; background: var(--accent); border-radius: 3px; animation: scrollBounce 1.6s infinite; }
-@keyframes scrollBounce { 0%{ opacity:0; transform: translateY(-4px);} 40%{opacity:1;} 80%,100%{ opacity:0; transform: translateY(8px);} }
-
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-  #hero { padding-top: 110px; padding-bottom: 80px; min-height: auto; }
-}
-
-/* ============================================================
-   ABOUT
-   ============================================================ */
-.about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 54px; align-items: center; }
-.about-bio p { color: var(--muted); margin-bottom: 16px; font-size: 1.05rem; }
-.stat-row { display: flex; gap: 30px; margin-top: 30px; flex-wrap: wrap; }
-.stat .n { font-family: var(--mono); font-size: 2rem; font-weight: 700; color: var(--accent); }
-.stat .l { font-size: 0.8rem; color: var(--dim); text-transform: uppercase; letter-spacing: .12em; }
-
-.skillbars { display: flex; flex-direction: column; gap: 18px; }
-.skillbar .top { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.82rem; margin-bottom: 7px; }
-.skillbar .top .pct { color: var(--accent); }
-.skillbar .track { height: 7px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
-.skillbar .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 6px; transition: width 1.3s cubic-bezier(.4,0,.2,1); }
-@media (max-width: 820px){ .about-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-/* ============================================================
-   CONTACT
-   ============================================================ */
-.chip { font-family: var(--mono); font-size: 0.72rem; padding: 5px 11px; border-radius: 7px; background: rgba(255,255,255,0.04); border: 1px solid var(--line-soft); color: var(--muted); }
-.feat-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-
-/* ============================================================
-   CV / RESUME
-   ============================================================ */
-.cv-card {
-  background: var(--panel); border: 1px solid var(--line-soft); border-radius: 20px; overflow: hidden;
-}
-.cv-inner {
-  display: grid; grid-template-columns: 260px 1fr; gap: 0;
-}
-.cv-left {
-  padding: 36px 28px; background: rgba(79,140,255,0.03);
-  border-right: 1px solid var(--line-soft);
-  text-align: center; display: flex; flex-direction: column; align-items: center;
-}
-.cv-avatar {
-  width: 84px; height: 84px; border-radius: 50%; overflow: hidden;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
-  border: 2px solid var(--line);
-}
-.cv-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.cv-initials { font-size: 1.8rem; font-weight: 800; color: #fff; font-family: var(--mono); }
-.cv-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 4px; }
-.cv-role { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); margin-bottom: 2px; }
-.cv-company { font-family: var(--mono); font-size: 0.76rem; color: var(--dim); margin-bottom: 20px; }
-.cv-links { display: flex; gap: 8px; flex-direction: column; width: 100%; }
-.cv-links .btn { justify-content: center; }
-.cv-right { padding: 36px; }
-.cv-section { margin-bottom: 24px; }
-.cv-section:last-child { margin-bottom: 0; }
-.cv-section h4 {
-  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
-}
-.cv-section p { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
-.cv-item { margin-bottom: 14px; }
-.cv-item:last-child { margin-bottom: 0; }
-.cv-item-title { font-weight: 600; font-size: 0.98rem; }
-.cv-item-sub { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
-.cv-item-date { font-family: var(--mono); font-size: 0.7rem; color: var(--dim); margin-top: 2px; }
-.cv-item-desc { font-size: 0.85rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
-@media (max-width: 720px) {
-  .cv-inner { grid-template-columns: 1fr; }
-  .cv-left { border-right: none; border-bottom: 1px solid var(--line-soft); padding: 28px 20px; min-width: 0; }
-  .cv-right { padding: 24px 20px; min-width: 0; }
-  .cv-links { flex-direction: row; flex-wrap: wrap; }
-  .cv-links .btn { flex: 1 1 auto; justify-content: center; }
-}
-
-/* device mockup */
-.feat-card { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 20px; overflow: hidden; }
-.feat-inner { display: grid; grid-template-columns: 1fr 1fr; }
-.feat-left { padding: 44px; display: flex; flex-direction: column; justify-content: center; }
-.feat-badge { font-family: var(--mono); font-size: 0.68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--accent2); display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; }
-.feat-badge .blip { width: 7px; height: 7px; border-radius: 50%; background: var(--accent2); box-shadow: var(--glow2); }
-.feat-left h3 { font-size: 1.7rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px; }
-.feat-left .feat-sub { color: var(--accent); font-family: var(--mono); font-size: 0.82rem; margin-bottom: 18px; }
-.feat-block { margin-bottom: 14px; }
-.feat-block .fb-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: 4px; }
-.feat-block .fb-text { color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
-.feat-features { list-style: none; margin: 6px 0 20px; }
-.feat-features li { font-size: 0.9rem; color: var(--muted); padding: 5px 0 5px 22px; position: relative; }
-.feat-features li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
-.feat-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.feat-right { padding: 44px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 30%, rgba(79,140,255,0.06), transparent 70%); }
-.device {
-  width: 100%; max-width: 360px; background: #0c0d14; border: 1px solid var(--line);
-  border-radius: 16px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.5);
-}
-.device-bar { display: flex; align-items: center; gap: 6px; padding: 11px 14px; border-bottom: 1px solid var(--line-soft); background: rgba(255,255,255,0.02); }
-.device-bar .d { width: 9px; height: 9px; border-radius: 50%; }
-.device-bar .url { margin-left: 8px; font-family: var(--mono); font-size: 0.66rem; color: var(--dim); }
-.device-screen { padding: 20px; font-family: var(--mono); font-size: 0.78rem; }
-.dev-rec { display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 12px; background: rgba(79,140,255,0.05); border: 1px solid var(--line-soft); margin-bottom: 14px; }
-.dev-mic { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; }
-.dev-mic::after { content:''; position:absolute; inset: -6px; border-radius: 50%; border: 1.5px solid var(--accent); opacity: .5; animation: ripple 1.8s infinite; }
-@keyframes ripple { 0%{ transform: scale(.8); opacity:.6;} 100%{ transform: scale(1.5); opacity:0;} }
-.wave { display: flex; align-items: center; gap: 3px; height: 24px; }
-.wave span { width: 3px; background: var(--accent); border-radius: 3px; animation: wave 1.1s ease-in-out infinite; }
-.wave span:nth-child(2){ animation-delay:.15s;} .wave span:nth-child(3){animation-delay:.3s;}
-.wave span:nth-child(4){ animation-delay:.45s;} .wave span:nth-child(5){animation-delay:.2s;}
-.wave span:nth-child(6){ animation-delay:.5s;} .wave span:nth-child(7){animation-delay:.1s;}
-@keyframes wave { 0%,100%{ height: 6px; } 50%{ height: 22px; } }
-.dev-trans { color: var(--muted); line-height: 1.7; }
-.dev-trans .hl { color: var(--accent2); }
-.dev-arrow { text-align: center; color: var(--accent); margin: 8px 0; }
-.dev-notion { padding: 12px; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--line-soft); color: var(--text); }
-
-@media (max-width: 880px){ .feat-inner { grid-template-columns: 1fr; } .feat-left, .feat-right { padding: 30px; } }
-
-/* ============================================================
-   PROJECTS GRID
-   ============================================================ */
-.proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
-.proj-card {
-  position: relative; border: 1px solid var(--line-soft); border-radius: 16px;
-  background: var(--panel); padding: 24px; transition: transform .28s, box-shadow .28s;
-  overflow: hidden; display: flex; flex-direction: column; min-height: 200px;
-}
-.proj-card::before {
-  content: ''; position: absolute; inset: -1px; border-radius: 17px;
-  padding: 1.5px; pointer-events: none; opacity: 0;
-  /* a bright comet head with a fading tail that runs ALONG the border edge */
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 296deg,
-    rgba(255, 224, 102, 0) 300deg,
-    rgba(255, 214, 10, 0.5) 336deg,
-    #ffd60a 350deg,
-    #fff3b0 359deg,
-    #ffd60a 360deg
-  );
-  /* keep only the thin border frame — nothing fills the inside */
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  transition: opacity .35s;
-}
-.proj-card:hover {
-  transform: translateY(-6px); border-color: rgba(255, 214, 10, 0.25);
-  box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 22px rgba(255, 190, 0, 0.12);
-}
-.proj-card:hover::before {
-  opacity: 1; animation: spin 2.2s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-.proj-folder { color: var(--accent); }
-/* generated thumbnail */
-.proj-thumb {
-  position: relative; height: 124px; margin: -24px -24px 16px; overflow: hidden;
-  border-bottom: 1px solid var(--line-soft);
-  display: flex; align-items: center; justify-content: center;
-}
-.proj-thumb::before {
-  content: ''; position: absolute; inset: 0; opacity: 0.92;
-  background: var(--thumb, linear-gradient(135deg, #4f8cff, #7c5cfc));
-}
-.proj-thumb::after {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(11,13,21,.5) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(11,13,21,.5) 1px, transparent 1px);
-  background-size: 22px 22px; opacity: .3;
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000, transparent 78%);
-  mask-image: radial-gradient(circle at 50% 50%, #000, transparent 78%);
-}
-.proj-thumb .pt-mark {
-  position: relative; z-index: 1;
-  font-family: var(--mono); font-weight: 700; font-size: 2.5rem; color: #fff;
-  text-shadow: 0 2px 18px rgba(0,0,0,.45); letter-spacing: -.02em;
-  transition: transform .3s;
-}
-.proj-thumb .pt-lang {
-  position: absolute; z-index: 1; top: 10px; right: 12px;
-  font-family: var(--mono); font-size: 0.62rem; padding: 3px 8px; border-radius: 20px;
-  background: rgba(11,13,21,.55); color: #fff; backdrop-filter: blur(4px);
-}
-.proj-card:hover .proj-thumb .pt-mark { transform: scale(1.07); }
-.proj-langtag { font-family: var(--mono); font-size: 0.68rem; padding: 4px 9px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px; }
-.proj-langtag .dot { width: 8px; height: 8px; border-radius: 50%; }
-.proj-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; word-break: break-word; }
-.proj-desc { color: var(--muted); font-size: 0.9rem; flex: 1; margin-bottom: 18px; }
-.proj-link { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; transition: gap .2s; }
-.proj-card:hover .proj-link { gap: 12px; }
-
-/* lang colors */
-.lang-ts { background: rgba(49,120,198,0.14); color: #6ca6ff; } .lang-ts .dot { background: #3178c6; }
-.lang-js { background: rgba(240,219,79,0.12); color: #f0db4f; } .lang-js .dot { background: #f0db4f; }
-.lang-java { background: rgba(248,152,32,0.12); color: #f89820; } .lang-java .dot { background: #f89820; }
-.lang-py { background: rgba(69,130,236,0.14); color: #6ba4ff; } .lang-py .dot { background: #4582ec; }
-
-/* ============================================================
-   GITHUB ACTIVITY
-   ============================================================ */
-.gh-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
-.gh-panel { border: 1px solid var(--line-soft); border-radius: 16px; background: var(--panel); padding: 26px; }
-.gh-panel h3 { font-family: var(--mono); font-size: 0.86rem; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 9px; font-weight: 500; }
-.contrib { display: grid; grid-template-rows: repeat(7, 1fr); grid-auto-flow: column; grid-auto-columns: 1fr; gap: 3px; }
-.contrib i { aspect-ratio: 1; border-radius: 2px; background: rgba(255,255,255,0.04); }
-.contrib i.l1 { background: rgba(124,92,252,0.25); } .contrib i.l2 { background: rgba(124,92,252,0.45); }
-.contrib i.l3 { background: rgba(124,92,252,0.7); } .contrib i.l4 { background: var(--accent2); box-shadow: 0 0 6px rgba(124,92,252,.5); }
-.contrib-legend { display: flex; align-items: center; justify-content: flex-end; gap: 6px; margin-top: 14px; font-family: var(--mono); font-size: 0.7rem; color: var(--dim); }
-.contrib-legend i { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
-.feed-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
-.feed-item:last-child { border-bottom: none; }
-.feed-ico { width: 34px; height: 34px; border-radius: 9px; background: rgba(79,140,255,0.08); display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
-.feed-name { font-weight: 600; font-size: 0.94rem; }
-.feed-meta { font-family: var(--mono); font-size: 0.74rem; color: var(--dim); margin-top: 2px; }
-@media (max-width: 820px){ .gh-grid { grid-template-columns: 1fr; gap: 24px; } }
-
-/* ============================================================
-   SKILLS
-   ============================================================ */
-.skill-cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-.skill-cat { border: 1px solid var(--line-soft); border-radius: 16px; background: var(--panel); padding: 24px; transition: border-color .25s, transform .25s; }
-.skill-cat:hover { border-color: var(--line); transform: translateY(-4px); }
-.skill-cat h4 { font-family: var(--mono); font-size: 0.78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
-.skill-cat .ico { color: var(--accent2); }
-.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.skill-tags span { font-family: var(--mono); font-size: 0.8rem; padding: 7px 12px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid var(--line-soft); color: var(--text); transition: all .2s; }
-.skill-tags span:hover { color: var(--accent); border-color: var(--accent); box-shadow: var(--glow); transform: translateY(-2px); }
-
-/* ============================================================
-   CONTACT
-   ============================================================ */
-.contact-term { max-width: 720px; margin: 0 auto; }
-.contact-body { padding: 26px; height: auto; }
-.contact-body .term-line { margin-bottom: 4px; }
-.contact-links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 34px; }
-
-/* contact form */
-.contact-form { max-width: 720px; margin: 28px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.contact-form .full { grid-column: 1 / -1; }
-.contact-form label { display: block; font-family: var(--mono); font-size: 0.68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
-.contact-form input, .contact-form textarea {
-  width: 100%; background: rgba(255,255,255,0.03); border: 1px solid var(--line-soft);
-  border-radius: 10px; padding: 12px 14px; color: var(--text);
-  font-family: var(--sans); font-size: 0.92rem; transition: border-color .2s, box-shadow .2s;
-}
-.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); box-shadow: var(--glow); }
-.contact-form textarea { resize: vertical; min-height: 120px; }
-.contact-form .form-submit { justify-content: center; cursor: pointer; }
-@media (max-width: 600px) { .contact-form { grid-template-columns: 1fr; } }
-
-/* business card */
-.bizcard {
-  max-width: 580px; margin: 0 auto 30px;
-  display: grid; grid-template-columns: 178px 1fr;
-  background: linear-gradient(135deg, #14161f, #0d0e16);
-  border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0,0,0,.5); position: relative;
-}
-.bizcard::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(var(--accent), var(--accent2)); z-index: 2; }
-.bizcard-photo { position: relative; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; min-height: 200px; }
-.bizcard-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-.bizcard-photo .bc-initials { display: none; font-family: var(--mono); font-weight: 800; font-size: 3.4rem; color: #fff; }
-.bizcard-info { padding: 24px 26px; display: flex; flex-direction: column; justify-content: center; }
-.bizcard-info .bc-name { font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em; }
-.bizcard-info .bc-role { font-family: var(--mono); font-size: 0.76rem; color: var(--accent); margin-bottom: 16px; }
-.bc-row { display: flex; align-items: center; gap: 11px; font-size: 0.85rem; color: var(--muted); margin-bottom: 9px; }
-.bc-row:last-child { margin-bottom: 0; }
-.bc-row svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; }
-.bc-row a { color: var(--muted); transition: color .2s; }
-.bc-row a:hover { color: var(--text); }
-@media (max-width: 540px) {
-  .bizcard { grid-template-columns: 1fr; }
-  .bizcard-photo { min-height: 220px; }
-  .bizcard-photo img { position: relative; }
-}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer { border-top: 1px solid var(--line-soft); padding: 50px 0 40px; position: relative; z-index: 2; }
-.foot-grid { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.foot-brand { font-family: var(--mono); font-weight: 700; font-size: 1.1rem; }
-.foot-brand .o { color: var(--accent2); }
-.foot-tag { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
-.foot-copy { font-family: var(--mono); font-size: 0.78rem; color: var(--dim); }
-.to-top { width: 46px; height: 46px; border-radius: 12px; border: 1px solid var(--line); background: rgba(79,140,255,0.05); display: flex; align-items: center; justify-content: center; color: var(--accent); transition: all .22s; }
-.to-top:hover { transform: translateY(-4px); box-shadow: var(--glow); }
-
-/* ============================================================
-   SCROLL REVEAL
-   ============================================================ */
-.reveal { opacity: 0; transform: translateY(34px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
-.reveal.in { opacity: 1; transform: none; }
-.reveal.d1 { transition-delay: .08s; } .reveal.d2 { transition-delay: .16s; }
-.reveal.d3 { transition-delay: .24s; } .reveal.d4 { transition-delay: .32s; }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-  .reveal { opacity: 1; transform: none; }
-}
-
-/* lang visibility helpers */
-[data-en], [data-mm] { display: inline; }
-
-/* ============================================================
-   MOBILE RESPONSIVE
-   ============================================================ */
-
-/* ---------- BURGER (hidden on desktop) ---------- */
-.nav-burger {
-  display: none; flex-direction: column; gap: 5px;
-  background: none; border: none; cursor: none; padding: 4px; z-index: 210;
-}
-.nav-burger span {
-  display: block; width: 24px; height: 2px;
-  background: var(--text); border-radius: 2px;
-  transition: transform .3s, opacity .3s;
-}
-.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-burger.open span:nth-child(2) { opacity: 0; }
-.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* ---------- 768px (tablet / small laptop) ---------- */
-@media (max-width: 860px) {
-  .nav-links {
-    position: fixed; top: 0; right: -100%; width: 260px; height: 100vh;
-    flex-direction: column; gap: 0; padding: 80px 30px 30px;
-    background: rgba(10,10,15,0.96); backdrop-filter: blur(20px);
-    border-left: 1px solid var(--line);
-    transition: right .35s cubic-bezier(.4,0,.2,1); z-index: 205;
-  }
-  .nav-links.open { right: 0; }
-  .nav-links a { font-size: 1rem; padding: 16px 0; border-bottom: 1px solid var(--line-soft); width: 100%; }
-  .nav-links a::after { display: none; }
-  .nav-burger { display: flex; }
-  body.nav-open { overflow: hidden; }
-  section { padding: 70px 0; }
-  .foot-grid { flex-direction: column; text-align: center; gap: 16px; }
-}
-
-/* ---------- 600px (large phone) ---------- */
-@media (max-width: 600px) {
-  .wrap { padding: 0 18px; }
-  #hero { padding-top: 90px; padding-bottom: 60px; min-height: auto; }
-  .hero h1 { font-size: clamp(1.8rem, 10vw, 2.6rem); }
-  .hero-sub { font-size: 0.95rem; }
-  .hero-btns { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .hero-btns .btn { width: 100%; justify-content: center; }
-  .h2 { font-size: clamp(1.5rem, 7vw, 2rem); margin-bottom: 12px; }
-  .lead { font-size: 0.92rem; }
-  section { padding: 50px 0; }
-  .eyebrow { font-size: 0.7rem; }
-  #termCard .term-body { height: 240px; font-size: 0.78rem; }
-  .stat-row { gap: 20px; }
-  .stat .n { font-size: 1.5rem; }
-  .stat .l { font-size: 0.7rem; }
-  .proj-grid { grid-template-columns: 1fr; gap: 16px; }
-  .proj-card { min-height: auto; padding: 20px; }
-  .proj-card:hover { transform: none; }
-  .proj-name { font-size: 1rem; }
-  .proj-desc { font-size: 0.84rem; }
-  .feat-left, .feat-right { padding: 24px 18px !important; }
-  .feat-left h3 { font-size: 1.3rem; }
-  .contact-body { padding: 18px; }
-  .contact-body .term-line { font-size: 0.78rem; }
-  .contact-links { flex-direction: column; align-items: center; }
-  .contact-links .btn { width: 100%; justify-content: center; }
-  .gh-panel { padding: 18px; }
-  .feed-ico { width: 28px; height: 28px; }
-  .feed-ico svg { width: 13px; height: 13px; }
-  .feed-name { font-size: 0.85rem; }
-  .contrib { gap: 2px; }
-  .skill-cats { grid-template-columns: 1fr; }
-  .skill-cat { padding: 18px; }
-  .skill-tags span { font-size: 0.73rem; padding: 5px 10px; }
-  .scroll-ind { display: none; }
-  footer { padding: 36px 0 28px; }
-  .foot-grid { gap: 12px; }
-  .to-top { width: 38px; height: 38px; }
-  .boot-center .boot-logo { font-size: 2.2rem; }
-  .boot-sub { font-size: 0.8rem; }
-}
-
-/* ---------- 400px (small phone) ---------- */
-@media (max-width: 400px) {
-  .wrap { padding: 0 14px; }
-  .h2 { font-size: clamp(1.3rem, 6vw, 1.6rem); }
-  .term-body { padding: 14px; }
-  .feat-features { padding-left: 0; }
-  .feat-features li { font-size: 0.82rem; padding: 6px 0; }
-}
-</style>
+  <!-- ============ THREE.JS (CDN) ============ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
-<div id="scrollProgress"></div>
+  <div id="scrollProgress"></div>
 
-<!-- ============ BOOT SCREEN ============ -->
-<div id="boot">
-  <div class="boot-center">
-    <div class="boot-logo">Nikko</div>
-    <div class="boot-sub">portfolio v2.0</div>
+  <!-- ============ BOOT SCREEN ============ -->
+  <div id="boot">
+    <div class="boot-center">
+      <div class="boot-logo">Nikko</div>
+      <div class="boot-sub">portfolio v2.0</div>
+    </div>
+    <div class="boot-skip">click anywhere to skip →</div>
   </div>
-  <div class="boot-skip">click anywhere to skip →</div>
-</div>
 
+  <!-- ============ 3D BG ============ -->
+  <canvas id="bg3d"></canvas>
+  <div id="cursorGlow"></div>
 
-<!-- ============ 3D BG ============ -->
-<canvas id="bg3d"></canvas>
-<div id="cursorGlow"></div>
-
-<!-- ============ PULL-CORD: view projects ============ -->
-<div id="pullCord" title="Pull to view projects">
-  <div class="cord-inner">
-    <div class="cord"></div>
-    <button class="cord-knob" id="cordKnob" aria-label="Pull to view projects">
-      <span class="knob-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
-      <span class="knob-label">view<br>projects</span>
-    </button>
-  </div>
-</div>
-
-<!-- ============ NAV ============ -->
-<nav id="nav">
-  <a href="#hero" class="brand" data-link>Nikko<span class="dot"></span></a>
-  <div class="nav-links" id="navLinks">
-    <a href="#about" data-link>about</a>
-    <a href="#featured" data-link>work</a>
-    <a href="#cv" data-link>cv</a>
-    <a href="#skills" data-link>skills</a>
-    <a href="#contact" data-link>contact</a>
-      </div>
-  <button class="nav-burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
-</nav>
-
-<main>
-
-<!-- ============ HERO ============ -->
-<section id="hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-text">
-        <div class="hero-tag reveal"><span class="blip"></span>
-          available for work · Myanmar
-                  </div>
-        <h1 class="reveal d1">
-          <span class="grad-text">Htet Min Paing</span>
-        </h1>
-        <p class="hero-sub reveal d2">
-          Full Stack Developer 🇲🇲
-        </p>
-        <p class="hero-sub reveal d2">
-          Building AI products for the Myanmar market.
-                  </p>
-        <div class="hero-cta reveal d3">
-          <a href="#cv" class="btn btn-primary" data-link>
-            View CV
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="#contact" class="btn" data-link>
-            Get in touch
-          </a>
-        </div>
-      </div>
-
-      <!-- TERMINAL -->
-      <div class="terminal reveal d2" id="termCard">
-        <div class="term-bar">
-          <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-          <span class="term-title">nikko@neo: ~/portfolio</span>
-        </div>
-        <div class="term-body" id="termBody">
-          <!-- typed output injected by JS -->
-        </div>
-      </div>
+  <!-- ============ PULL-CORD: view projects ============ -->
+  <div id="pullCord" title="Pull to view projects">
+    <div class="cord-inner">
+      <div class="cord"></div>
+      <button class="cord-knob" id="cordKnob" aria-label="Pull to view projects">
+        <span class="knob-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+        <span class="knob-label">view<br>projects</span>
+      </button>
     </div>
   </div>
-  <div class="scroll-ind reveal d4">
-    <div class="scroll-mouse"><span></span></div>
-    <div>SCROLL</div>
-  </div>
-</section>
 
-<!-- ============ ABOUT ============ -->
-<section id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="about-bio">
-        <div class="eyebrow reveal">// about</div>
-        <h2 class="h2 reveal d1">Engineer building <span class="grad-text">for Myanmar</span></h2>
-        <p>I'm an IT professional with <strong style="color:var(--text)">8+ years</strong> in technical support, networking, and hardware — now building real products as a developer. My current focus is <strong style="color:var(--text)">SagaNote</strong> — a Voice-to-Notion SaaS that records meetings, transcribes & translates them to Burmese, and saves the minutes automatically.</p>
-        <p>From Telegram bots in Python &amp; SQLite to modern web apps in Next.js, React, and Supabase — I ship practical software for the Myanmar market.</p>
-        <div class="stat-row reveal d3">
-          <div class="stat"><div class="n">7+</div><div class="l">Projects</div></div>
-          <div class="stat"><div class="n">4</div><div class="l">Languages</div></div>
-          <div class="stat"><div class="n">∞</div><div class="l">Curiosity</div></div>
-        </div>
-      </div>
-      <div class="skillbars reveal d2" id="skillbars">
-        <div class="skillbar"><div class="top"><span>IT Support / Networking</span><span class="pct">92%</span></div><div class="track"><div class="fill" data-w="92%"></div></div></div>
-        <div class="skillbar"><div class="top"><span>Python / Telegram Bots</span><span class="pct">88%</span></div><div class="track"><div class="fill" data-w="88%"></div></div></div>
-        <div class="skillbar"><div class="top"><span>Next.js / React</span><span class="pct">85%</span></div><div class="track"><div class="fill" data-w="85%"></div></div></div>
-        <div class="skillbar"><div class="top"><span>UI/UX Design · Figma</span><span class="pct">82%</span></div><div class="track"><div class="fill" data-w="82%"></div></div></div>
-        <div class="skillbar"><div class="top"><span>TypeScript · Supabase</span><span class="pct">80%</span></div><div class="track"><div class="fill" data-w="80%"></div></div></div>
-      </div>
+  <!-- ============ NAV ============ -->
+  <nav id="nav">
+    <a href="#hero" class="brand" data-link>Nikko<span class="dot"></span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about" data-link>about</a>
+      <a href="#featured" data-link>work</a>
+      <a href="#cv" data-link>cv</a>
+      <a href="#skills" data-link>skills</a>
+      <a href="#contact" data-link>contact</a>
     </div>
-  </div>
-</section>
+    <button class="nav-burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+  </nav>
 
-<!-- ============ FEATURED: SAGANOTE CASE STUDY ============ -->
-<section id="featured">
-  <div class="wrap">
-    <div class="eyebrow reveal">// featured work</div>
-    <h2 class="h2 reveal d1" style="margin-bottom:34px">Case study · <span class="grad-text">SagaNote</span></h2>
-    <div class="feat-card reveal d2">
-      <div class="feat-inner">
-        <div class="feat-left">
-          <div class="feat-badge"><span class="blip"></span>Flagship SaaS · in development</div>
-          <h3>AI Voice → Notion</h3>
-          <div class="feat-sub">Record → transcribe → translate → save</div>
-
-          <div class="feat-block">
-            <div class="fb-label">Problem</div>
-            <div class="fb-text">Myanmar teams lose meeting decisions — note-taking in Burmese is slow, and English tools mis-transcribe local speech.</div>
-          </div>
-          <div class="feat-block">
-            <div class="fb-label">Solution</div>
-            <div class="fb-text">A voice-first app that records a meeting, generates a Burmese transcript with Gemini AI, summarizes the minutes, and writes them straight into Notion.</div>
-          </div>
-
-          <ul class="feat-features">
-            <li>One-tap recording with live waveform</li>
-            <li>AI transcription &amp; Burmese translation</li>
-            <li>Auto-formatted minutes saved to Notion</li>
-            <li>SaaS billing in MMK for the local market</li>
-          </ul>
-
-          <div class="feat-stack">
-            <span class="chip">Next.js</span><span class="chip">Supabase</span><span class="chip">Gemini AI</span>
-            <span class="chip">Notion API</span><span class="chip">Vercel</span>
-          </div>
-          <div class="feat-actions" style="margin-top:22px">
-            <a href="https://github.com/htet1996/SagaNote" target="_blank" rel="noopener" class="btn btn-primary">
-              View project
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="feat-right">
-          <div class="device">
-            <div class="device-bar">
-              <span class="d" style="background:#ff5f56"></span><span class="d" style="background:#ffbd2e"></span><span class="d" style="background:#27c93f"></span>
-              <span class="url">saganote.app</span>
+  <main>
+    <!-- ============ HERO ============ -->
+    <section id="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <div class="hero-tag reveal"><span class="blip"></span>
+              available for work · Myanmar
             </div>
-            <div class="device-screen">
-              <div class="dev-rec">
-                <div class="dev-mic">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4"/></svg>
+            <h1 class="reveal d1">
+              <span class="grad-text">Htet Min Paing</span>
+            </h1>
+            <p class="hero-sub reveal d2">
+              Full Stack Developer 🇲🇲
+            </p>
+            <p class="hero-sub reveal d2">
+              Building high-impact AI products and offline-first systems tailored for the Myanmar market.
+            </p>
+            <div class="hero-cta reveal d3">
+              <a href="#cv" class="btn btn-primary" data-link>
+                View CV
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a href="#contact" class="btn" data-link>
+                Get in touch
+              </a>
+            </div>
+          </div>
+
+          <!-- TERMINAL -->
+          <div class="terminal reveal d2" id="termCard">
+            <div class="term-bar">
+              <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+              <span class="term-title">nikko@neo: ~/portfolio</span>
+            </div>
+            <div class="term-body" id="termBody">
+              <!-- typed output injected by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-ind reveal d4">
+        <div class="scroll-mouse"><span></span></div>
+        <div>SCROLL</div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-bio">
+            <div class="eyebrow reveal">// about</div>
+            <h2 class="h2 reveal d1">Engineer building <span class="grad-text">for Myanmar</span></h2>
+            <p>I'm an IT professional with <strong style="color:var(--text)">8+ years</strong> in technical support, networking, and hardware — now building real products as a developer. My current focus is <strong style="color:var(--text)">SagaNote</strong> — a Voice-to-Notion SaaS that records meetings, transcribes & translates them to Burmese, and saves the minutes automatically.</p>
+            <p>From Telegram bots in Python &amp; SQLite to modern web apps in Next.js, React, and Supabase — I ship practical software for the Myanmar market.</p>
+            <div class="stat-row reveal d3">
+              <div class="stat"><div class="n">7+</div><div class="l">Projects</div></div>
+              <div class="stat"><div class="n">4</div><div class="l">Languages</div></div>
+              <div class="stat"><div class="n">∞</div><div class="l">Curiosity</div></div>
+            </div>
+          </div>
+          <div class="skillbars reveal d2" id="skillbars">
+            <div class="skillbar"><div class="top"><span>IT Support / Networking</span><span class="pct">92%</span></div><div class="track"><div class="fill" data-w="92%"></div></div></div>
+            <div class="skillbar"><div class="top"><span>Python / Telegram Bots</span><span class="pct">88%</span></div><div class="track"><div class="fill" data-w="88%"></div></div></div>
+            <div class="skillbar"><div class="top"><span>Next.js / React</span><span class="pct">85%</span></div><div class="track"><div class="fill" data-w="85%"></div></div></div>
+            <div class="skillbar"><div class="top"><span>UI/UX Design · Figma</span><span class="pct">82%</span></div><div class="track"><div class="fill" data-w="82%"></div></div></div>
+            <div class="skillbar"><div class="top"><span>TypeScript · Supabase</span><span class="pct">80%</span></div><div class="track"><div class="fill" data-w="80%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED: SAGANOTE CASE STUDY ============ -->
+    <section id="featured">
+      <div class="wrap">
+        <div class="eyebrow reveal">// featured work</div>
+        <h2 class="h2 reveal d1" style="margin-bottom:34px">Case study · <span class="grad-text">SagaNote</span></h2>
+        <div class="feat-card reveal d2">
+          <div class="feat-inner">
+            <div class="feat-left">
+              <div class="feat-badge"><span class="blip"></span>Flagship SaaS · in development</div>
+              <h3>AI Voice → Notion</h3>
+              <div class="feat-sub">Record → transcribe → translate → save</div>
+
+              <div class="feat-block">
+                <div class="fb-label">Problem</div>
+                <div class="fb-text">Myanmar teams lose meeting decisions because manual note-taking is slow and English AI tools mis-transcribe local speech.</div>
+              </div>
+              <div class="feat-block">
+                <div class="fb-label">Solution</div>
+                <div class="fb-text">A voice-first pipeline using Gemini 2.5 Flash for transcription and Burmese translation, then auto-formatting and saving minutes to Notion.</div>
+              </div>
+
+              <ul class="feat-features">
+                <li>One-tap recording with live waveform</li>
+                <li>AI transcription &amp; Burmese translation</li>
+                <li>Auto-formatted minutes saved to Notion</li>
+                <li>SaaS billing in MMK for the local market</li>
+              </ul>
+
+              <div class="feat-stack">
+                <span class="chip">Next.js</span><span class="chip">Supabase</span><span class="chip">Gemini AI</span>
+                <span class="chip">Notion API</span><span class="chip">Vercel</span>
+              </div>
+              <div class="feat-actions" style="margin-top:22px">
+                <a href="https://github.com/htet1996/SagaNote" target="_blank" rel="noopener" class="btn btn-primary">
+                  View project
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="feat-right">
+              <div class="device">
+                <div class="device-bar">
+                  <span class="d" style="background:#ff5f56"></span><span class="d" style="background:#ffbd2e"></span><span class="d" style="background:#27c93f"></span>
+                  <span class="url">saganote.app</span>
                 </div>
-                <div class="wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-                <span style="margin-left:auto;color:var(--accent);font-size:0.72rem">● REC 02:14</span>
-              </div>
-              <div class="dev-trans">
-                <span class="hl">အစည်းအဝေး မှတ်တမ်း —</span> Q3 launch ကို သတ်မှတ်ပြီး၊ marketing team က content calendar ပြင်ဆင်မယ်…
-              </div>
-              <div class="dev-arrow">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-              </div>
-              <div class="dev-notion">
-                <div style="font-size:0.7rem;color:var(--dim);margin-bottom:6px">📄 Notion · Meeting Minutes</div>
-                <div style="color:var(--text)">✓ Q3 launch confirmed</div>
-                <div style="color:var(--text)">✓ Marketing prepares content calendar</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CV / RESUME ============ -->
-<section id="cv">
-  <div class="wrap">
-    <div class="eyebrow reveal">// resume</div>
-    <h2 class="h2 reveal d1" style="margin-bottom:34px"><span class="grad-text">CV</span> &amp; Experience</h2>
-    <div class="cv-card reveal d2">
-      <div class="cv-inner">
-        <div class="cv-left">
-          <div class="cv-avatar">
-            <img src="profile.jpg" alt="Htet Min Paing" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <span class="cv-initials" style="display:none">N</span>
-          </div>
-          <h3 class="cv-name">Htet Min Paing</h3>
-          <div class="cv-role">Full Stack Developer</div>
-          <div class="cv-company">Freelance · Yangon, Myanmar</div>
-          <div class="cv-links">
-            <a href="https://github.com/htet1996" target="_blank" rel="noopener" class="btn" style="padding:8px 14px;font-size:0.78rem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-            <a href="https://mm.linkedin.com/in/htetminpaing-it" target="_blank" rel="noopener" class="btn" style="padding:8px 14px;font-size:0.78rem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              LinkedIn
-            </a>
-            <a href="resume.html" target="_blank" class="btn" style="padding:8px 14px;font-size:0.78rem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-              Download Resume
-            </a>
-          </div>
-        </div>
-        <div class="cv-right">
-          <div class="cv-section">
-            <h4>About</h4>
-            <p>Versatile IT professional with <strong>8+ years of hands-on experience</strong> in technical support, network configuration, and hardware troubleshooting. Recently transitioned into <strong>Frontend Development &amp; UI/UX Design</strong>. Currently building Telegram bot solutions using Python, SQLite, and modern web technologies — creating practical products for the Myanmar market. Passionate about blending technical support expertise with modern development to ship reliable, user-friendly software.</p>
-          </div>
-          <div class="cv-section">
-            <h4>Experience</h4>
-            <div class="cv-item">
-              <div class="cv-item-title">Full Stack Developer</div>
-              <div class="cv-item-sub">Freelance · Remote</div>
-              <div class="cv-item-date">Sep 2025 — Present</div>
-              <div class="cv-item-desc">Developing custom Telegram bot solutions using Python and SQLite. Built VPN Commerce Bot (business automation) and Finance &amp; Crypto Bot (financial tracking). Full ownership from design through deployment.</div>
-            </div>
-            <div class="cv-item">
-              <div class="cv-item-title">IT Technician</div>
-              <div class="cv-item-sub">HTOO Group of Companies · Yangon</div>
-              <div class="cv-item-date">Dec 2022 — Apr 2024</div>
-              <div class="cv-item-desc">Provided comprehensive IT support across the organization. Configured and maintained network infrastructure, resolved hardware/software issues, and supported enterprise-level systems at one of Myanmar's largest conglomerates.</div>
-            </div>
-            <div class="cv-item">
-              <div class="cv-item-title">Computer Service Technician</div>
-              <div class="cv-item-sub">Citicom IT and Mobile · Yangon</div>
-              <div class="cv-item-date">Aug 2019 — Oct 2022</div>
-              <div class="cv-item-desc">Diagnosed and repaired hardware and software issues for clients. Built expertise in system configuration, customer support, and IT service delivery.</div>
-            </div>
-            <div class="cv-item">
-              <div class="cv-item-title">CCTV Installation &amp; Configuration Specialist</div>
-              <div class="cv-item-sub">NS CCTV and Networking Group · Yangon</div>
-              <div class="cv-item-date">Nov 2016 — May 2019</div>
-              <div class="cv-item-desc">Designed and deployed CCTV surveillance systems. Configured networking equipment and ensured reliable system integration for commercial clients.</div>
-            </div>
-            <div class="cv-item">
-              <div class="cv-item-title">Sales &amp; Marketing Executive</div>
-              <div class="cv-item-sub">Shwin Chan Trading Co., Ltd. · Yangon</div>
-              <div class="cv-item-date">May 2014 — Sep 2016</div>
-              <div class="cv-item-desc">Managed sales operations and marketing initiatives. Developed customer relationships and contributed to business growth strategies.</div>
-            </div>
-          </div>
-          <div class="cv-section">
-            <h4>Education</h4>
-            <div class="cv-item">
-              <div class="cv-item-title">West University of Yangon</div>
-              <div class="cv-item-sub">Information Technology</div>
-              <div class="cv-item-date">2016 — 2020</div>
-            </div>
-          </div>
-          <div class="cv-section">
-            <h4>Tech Stack</h4>
-            <div class="feat-stack" style="margin-top:0">
-              <span class="chip">React.js</span><span class="chip">Python</span><span class="chip">SQLite</span>
-              <span class="chip">Telegram Bot API</span><span class="chip">UI/UX Design</span><span class="chip">Next.js</span>
-              <span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Supabase</span>
-              <span class="chip">Gemini AI</span><span class="chip">Notion API</span><span class="chip">Git</span>
-              <span class="chip">Network Administration</span><span class="chip">Technical Support</span><span class="chip">Hardware Troubleshooting</span>
-            </div>
-          </div>
-          <div class="cv-section">
-            <h4>Key Projects</h4>
-            <div class="cv-item">
-              <div class="cv-item-title">VPN Commerce Bot</div>
-              <div class="cv-item-desc">Telegram bot for VPN service commerce — automated purchasing, user management, and payment integration. Built with Python + SQLite.</div>
-            </div>
-            <div class="cv-item">
-              <div class="cv-item-title">Finance &amp; Crypto Bot</div>
-              <div class="cv-item-desc">Telegram-based financial tracking and cryptocurrency monitoring bot. Real-time data, portfolio tracking, and Myanmar market focused.</div>
-            </div>
-            <div class="cv-item">
-              <div class="cv-item-title">SagaNote — AI Voice → Notion</div>
-              <div class="cv-item-desc">Record meetings, get AI transcripts translated to Burmese, and auto-save to Notion. Built with Next.js, Supabase, Gemini AI.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROJECTS GRID ============ -->
-<section id="projects">
-  <div class="wrap">
-    <div class="eyebrow reveal">// open source</div>
-    <h2 class="h2 reveal d1" style="margin-bottom:14px">More <span class="grad-text">Projects</span></h2>
-    <p class="lead reveal d1" style="margin-bottom:40px">A selection of work from across the stack — web, mobile, and backend.</p>
-    <div class="proj-grid" id="projGrid"><!-- cards injected by JS --></div>
-  </div>
-</section>
-
-<!-- ============ GITHUB ACTIVITY ============ -->
-<section id="github">
-  <div class="wrap">
-    <div class="eyebrow reveal">// github activity</div>
-    <h2 class="h2 reveal d1" style="margin-bottom:36px">Always <span class="grad-text">building</span></h2>
-    <div class="gh-grid">
-      <div class="gh-panel reveal d1">
-        <h3>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.5-.3s1.7.1 2.5.3c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5C19.1 20.2 22 16.4 22 12c0-5.5-4.5-10-10-10z"/></svg>
-          contributions · last year
-        </h3>
-        <div class="contrib" id="contrib"></div>
-        <div class="contrib-legend">less <i style="background:rgba(255,255,255,0.04)"></i><i class="l1" style="background:rgba(124,92,252,0.25)"></i><i class="l2" style="background:rgba(124,92,252,0.45)"></i><i class="l3" style="background:rgba(124,92,252,0.7)"></i><i class="l4" style="background:var(--accent2)"></i> more</div>
-        <div id="contribTotal" style="font-family:var(--mono);font-size:0.72rem;color:var(--dim);margin-top:10px"></div>
-      </div>
-      <div class="gh-panel reveal d2">
-        <h3>recent activity</h3>
-        <div id="ghFeed">
-          <div class="feed-item">
-            <div class="feed-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg></div>
-            <div><div class="feed-name">Loading…</div><div class="feed-meta">fetching latest from GitHub</div></div>
-          </div>
-        </div>
-        <a href="https://github.com/htet1996" target="_blank" rel="noopener" class="btn" style="margin-top:18px;width:100%;justify-content:center">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.5-.3s1.7.1 2.5.3c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5C19.1 20.2 22 16.4 22 12c0-5.5-4.5-10-10-10z"/></svg>
-          View on GitHub
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SKILLS ============ -->
-<section id="skills">
-  <div class="wrap">
-    <div class="eyebrow reveal">// tech stack</div>
-    <h2 class="h2 reveal d1" style="margin-bottom:36px">Skills & <span class="grad-text">Tools</span></h2>
-    <div class="skill-cats" id="skillCats"><!-- injected --></div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<section id="contact">
-  <div class="wrap">
-    <div class="eyebrow reveal" style="text-align:center;display:block">// contact</div>
-    <h2 class="h2 reveal d1" style="text-align:center;margin-bottom:32px">Let's <span class="grad-text">build</span> something great</h2>
-
-    <!-- business card -->
-    <div class="bizcard reveal d2">
-      <div class="bizcard-photo">
-        <span class="bc-initials">N</span>
-        <img src="profile.jpg" alt="Htet Min Paing" loading="lazy"
-             onerror="this.style.display='none';this.previousElementSibling.style.display='block'" />
-      </div>
-      <div class="bizcard-info">
-        <div class="bc-name">Htet Min Paing</div>
-        <div class="bc-role">Full Stack Developer · Nikko</div>
-        <div class="bc-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <a href="tel:+959970980251">09 970 980 251</a>
-        </div>
-        <div class="bc-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:htetminpaing.96@gmail.com">htetminpaing.96@gmail.com</a>
-        </div>
-        <div class="bc-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Yangon, Myanmar 🇲🇲</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="terminal contact-term reveal d2">
-      <div class="term-bar">
-        <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-        <span class="term-title">nikko@neo: ~/contact</span>
-      </div>
-      <div class="term-body contact-body">
-        <div class="term-line"><span class="term-prompt">$</span> <span class="c">cat</span> contact.json</div>
-        <div class="term-line">{</div>
-        <div class="term-line">  <span class="c">"name"</span>: <span class="e">"Htet Min Paing (Nikko)"</span>,</div>
-        <div class="term-line">  <span class="c">"role"</span>: <span class="e">"Full Stack Developer"</span>,</div>
-        <div class="term-line">  <span class="c">"email"</span>: <span class="e">"htetminpaing.96@gmail.com"</span>,</div>
-        <div class="term-line">  <span class="c">"phone"</span>: <span class="e">"09 970 980 251"</span>,</div>
-        <div class="term-line">  <span class="c">"location"</span>: <span class="e">"Myanmar 🇲🇲"</span>,</div>
-        <div class="term-line">  <span class="c">"status"</span>: <span class="w">"open to opportunities"</span></div>
-        <div class="term-line">}</div>
-        <div class="term-line"><span class="term-prompt">$</span> <span class="cursor-blink"></span></div>
-      </div>
-    </div>
-    <form class="contact-form reveal d3" id="contactForm">
-      <div>
-        <label for="cfName">Name</label>
-        <input id="cfName" name="name" type="text" placeholder="Your name" required />
-      </div>
-      <div>
-        <label for="cfEmail">Email</label>
-        <input id="cfEmail" name="email" type="email" placeholder="you@company.com" required />
-      </div>
-      <div class="full">
-        <label for="cfMsg">Message</label>
-        <textarea id="cfMsg" name="message" placeholder="Tell me about the role or project…" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary full form-submit">
-        Send message
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-      </button>
-    </form>
-
-    <div class="contact-links reveal d3">
-      <a href="#" class="btn btn-primary" id="emailBtn" onclick="copyEmail(event)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18v14H3zM3 7l9 6 9-6"/></svg>
-        <span id="emailLabel">Email me</span>
-      </a>
-      <div id="copyToast" style="position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--accent);color:#000;padding:10px 24px;border-radius:8px;font-family:var(--mono);font-size:0.85rem;opacity:0;transition:opacity .3s;pointer-events:none;z-index:99999;">📋 Copied to clipboard!</div>
-      <a href="https://github.com/htet1996" target="_blank" rel="noopener" class="btn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.5-.3s1.7.1 2.5.3c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5C19.1 20.2 22 16.4 22 12c0-5.5-4.5-10-10-10z"/></svg>
-        GitHub
-      </a>
-      <a href="https://mm.linkedin.com/in/htetminpaing-it?trk=people-guest_people_search-card" target="_blank" rel="noopener" class="btn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg>
-        LinkedIn
-      </a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <div class="foot-brand">Nikko</div>
-        <div class="foot-tag">
-          Built with ❤️ for Myanmar
+                <div class="device-screen">
+                  <div class="dev-rec">
+                    <div class="dev-mic">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4"/></svg>
+                    </div>
+                    <div class="wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                    <span style="margin-left:auto;color:var(--accent);font-size:0.72rem">● REC 02:14</span>
                   </div>
-        <div class="foot-copy" style="margin-top:6px">© 2026 Htet Min Paing</div>
-      </div>
-      <button class="to-top" id="toTop" aria-label="back to top">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-      </button>
-    </div>
-  </div>
-</footer>
-
-<script>
-/* ============================================================
-   Nikko PORTFOLIO — JavaScript
-   ============================================================ */
-(function () {
-  'use strict';
-  const $  = (s, c) => (c || document).querySelector(s);
-  const $$ = (s, c) => Array.from((c || document).querySelectorAll(s));
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- 2. BOOT → SITE TRANSITION ---------- */
-  let booted = false;
-  function finishBoot() {
-    if (booted) return; booted = true;
-    $('#boot').classList.add('done');
-    document.body.style.overflow = '';
-    try { sessionStorage.setItem('nikko_booted', '1'); } catch (e) {}
-    startTerminalIntro();
-    revealObserve();
-  }
-  // returning visitors (same tab session) skip the boot entirely
-  let seen = false;
-  try { seen = sessionStorage.getItem('nikko_booted') === '1'; } catch (e) {}
-  const BOOT_MS = (seen || reduceMotion) ? 350 : 1600;
-  window.addEventListener('load', () => { setTimeout(finishBoot, BOOT_MS); });
-  // let users skip immediately
-  ['click', 'keydown', 'touchstart'].forEach(ev =>
-    $('#boot').addEventListener(ev, finishBoot, { passive: true }));
-  document.body.style.overflow = 'hidden';
-
-  /* ---------- 4. INTERACTIVE PARTICLE BG (follows cursor) ---------- */
-  let mouseX = 0, mouseY = 0;     // smoothed, normalized -1..1
-  let tMouseX = 0, tMouseY = 0;   // target from raw cursor
-  window.addEventListener('mousemove', (e) => {
-    tMouseX = (e.clientX / window.innerWidth) * 2 - 1;
-    tMouseY = (e.clientY / window.innerHeight) * 2 - 1;
-    const g = $('#cursorGlow');
-    if (g) { g.style.setProperty('--mx', e.clientX + 'px'); g.style.setProperty('--my', e.clientY + 'px'); }
-  });
-
-  (function particles() {
-    if (typeof THREE === 'undefined' || reduceMotion) return;
-    const canvas = $('#bg3d');
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    const scene = new THREE.Scene();
-    const cam = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
-    cam.position.z = 320;
-    const N = 300, geo = new THREE.BufferGeometry(), pos = new Float32Array(N * 3);
-    for (let i = 0; i < N * 3; i++) pos[i] = (Math.random() - 0.5) * 720;
-    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    const mat = new THREE.PointsMaterial({ size: 2.4, color: 0x7c9cff, transparent: true, opacity: 0.4, depthWrite: false });
-    const pts = new THREE.Points(geo, mat); scene.add(pts);
-    function anim() {
-      // ease the smoothed mouse toward the cursor target
-      mouseX += (tMouseX - mouseX) * 0.05;
-      mouseY += (tMouseY - mouseY) * 0.05;
-      pts.rotation.y += 0.0004;
-      // parallax — the whole star-field leans toward the cursor
-      cam.position.x += (mouseX * 70 - cam.position.x) * 0.05;
-      cam.position.y += (-mouseY * 70 - cam.position.y) * 0.05;
-      cam.lookAt(scene.position);
-      renderer.render(scene, cam);
-      requestAnimationFrame(anim);
-    }
-    anim();
-    window.addEventListener('resize', () => {
-      cam.aspect = window.innerWidth / window.innerHeight; cam.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  })();
-
-  /* ---------- 5. INTERACTIVE TERMINAL ---------- */
-  const termBody = $('#termBody');
-  const introLines = [
-    { html: '<span class="term-prompt">&gt;</span> <span class="c">system.boot()</span>', d: 60 },
-    { html: '<span class="m">Welcome to <span class="e">Nikko</span> portfolio v2.0</span>', d: 40 },
-    { html: '<span class="m">Type <span class="c">\'help\'</span> for commands or scroll down</span>', d: 40 },
-  ];
-  function appendLine(html) {
-    const div = document.createElement('div');
-    div.className = 'term-line'; div.innerHTML = html;
-    termBody.appendChild(div); termBody.scrollTop = termBody.scrollHeight;
-    return div;
-  }
-  function typeLine(html, speed) {
-    return new Promise(res => {
-      const div = appendLine('');
-      let i = 0; const tmp = document.createElement('div'); tmp.innerHTML = html;
-      const full = html;
-      // simple char-by-char on the raw text but preserve tags by chunking
-      // We type the plain text then set innerHTML for color — quick approach:
-      const text = tmp.textContent;
-      const ti = setInterval(() => {
-        i++;
-        div.textContent = text.slice(0, i);
-        termBody.scrollTop = termBody.scrollHeight;
-        if (i >= text.length) { clearInterval(ti); div.innerHTML = full; res(); }
-      }, speed || 22);
-    });
-  }
-  let promptDiv = null;
-  async function startTerminalIntro() {
-    for (const l of introLines) { await typeLine(l.html, 18); await wait(120); }
-    makePrompt();
-  }
-  function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-  function makePrompt() {
-    const line = document.createElement('div');
-    line.className = 'term-line term-inline';
-    line.innerHTML = '<span class="term-prompt">$</span>';
-    const input = document.createElement('input');
-    input.className = 'term-input'; input.setAttribute('spellcheck', 'false');
-    input.setAttribute('autocomplete', 'off'); input.setAttribute('aria-label', 'terminal input');
-    line.appendChild(input); termBody.appendChild(line);
-    termBody.scrollTop = termBody.scrollHeight;
-    promptDiv = line;
-    input.focus();
-    input.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        const val = input.value.trim();
-        // freeze current line
-        line.innerHTML = '<span class="term-prompt">$</span> ' + escapeHtml(input.value);
-        promptDiv = null;
-        runCommand(val);
-      }
-    });
-  }
-  function escapeHtml(s) { return s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])); }
-
-  const commands = {
-    help() {
-      appendLine('<span class="c">Available commands:</span>');
-      appendLine('  <span class="e">help</span>      — show this list');
-      appendLine('  <span class="e">whoami</span>    — about the developer');
-      appendLine('  <span class="e">projects</span>  — jump to projects');
-      appendLine('  <span class="e">skills</span>    — jump to skills');
-      appendLine('  <span class="e">contact</span>   — jump to contact');
-      appendLine('  <span class="e">resume</span>   — view CV & experience');
-      appendLine('  <span class="e">clear</span>     — clear the terminal');
-      appendLine('  <span class="m">try also: </span><span class="w">sudo</span>, <span class="w">matrix</span>, <span class="w">date</span>');
-    },
-    whoami() {
-      appendLine('<span class="e">Htet Min Paing (Nikko)</span>');
-      appendLine('<span class="m">Full Stack Developer · Myanmar 🇲🇲</span>');
-    },
-    projects() { appendLine('<span class="m">→ scrolling to projects…</span>'); goTo('#projects'); },
-    skills()   { appendLine('<span class="m">→ scrolling to skills…</span>');   goTo('#skills'); },
-    contact()  { appendLine('<span class="m">→ scrolling to contact…</span>');  goTo('#contact'); },
-    about()    { appendLine('<span class="m">→ scrolling to about…</span>');    goTo('#about'); },
-    resume() {
-      appendLine('<span class="e">📄 Htet Min Paing — Full Stack Developer</span>');
-      appendLine('<span class="m">→ scrolling to CV section…</span>');
-      goTo('#cv');
-    },
-    clear() { termBody.innerHTML = ''; },
-    sudo() {
-      appendLine('<span class="err">[sudo] password for nikko:</span> ********');
-      appendLine('<span class="w">nikko is not in the sudoers file.</span>');
-      appendLine('<span class="err">This incident will be reported. 🚨</span>');
-      appendLine('<span class="m">…just kidding. You have all the power here. 😎</span>');
-    },
-    matrix() {
-      appendLine('<span class="e">Wake up, Neo… 🐇</span>');
-      appendLine('<span class="m">The Matrix has you. Follow the cyan rabbit.</span>');
-      document.documentElement.scrollTop = 0;
-    },
-    date() { appendLine('<span class="m">' + new Date().toString() + '</span>'); },
-    ls() { appendLine('<span class="c">about/  cv/  projects/  skills/  contact/  secrets.txt</span>'); },
-    cat() { appendLine('<span class="m">cat: usage: try `cat secrets.txt`</span>'); },
-    echo(args) { appendLine('<span class="m">' + escapeHtml(args.join(' ')) + '</span>'); },
-    hello() { appendLine('<span class="e">👋 Hello there!</span>'); }
-  };
-  commands['secrets.txt'] = commands.cat;
-
-  function runCommand(raw) {
-    if (!raw) { makePrompt(); return; }
-    const [cmd, ...args] = raw.split(/\s+/);
-    const key = cmd.toLowerCase();
-    if (key === 'cat' && args[0] === 'secrets.txt') {
-      appendLine('<span class="e">🤫 The secret: ship small, ship often. Built for Myanmar. 🇲🇲</span>');
-    } else if (commands[key]) {
-      commands[key](args);
-    } else {
-      appendLine('<span class="err">command not found: ' + escapeHtml(cmd) + '</span> <span class="m">— type \'help\'</span>');
-    }
-    if (key !== 'clear') makePrompt();
-    else makePrompt();
-  }
-
-  function goTo(sel) {
-    const el = $(sel); if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }
-  // click anywhere in terminal refocuses input
-  $('#termCard').addEventListener('click', () => { if (promptDiv) $('.term-input', promptDiv) && $('.term-input', promptDiv).focus(); });
-
-  /* ---------- 6. PROJECTS DATA + RENDER ---------- */
-  const projects = [
-    { name: 'SagaNote', lang: 'TypeScript', cls: 'ts', desc: 'AI Voice → Notion — flagship SaaS for Myanmar.', url: 'https://github.com/htet1996/SagaNote', thumb: 'linear-gradient(135deg,#4f8cff,#7c5cfc)', mark: '◈' },
-    { name: 'ai-agency-new', lang: 'TypeScript', cls: 'ts', desc: 'AI agency platform built with Next.js.', url: 'https://github.com/htet1996/ai-agency-new', thumb: 'linear-gradient(135deg,#3178c6,#4f8cff)', mark: 'AI' },
-    { name: 'nexushub-store', lang: 'TypeScript', cls: 'ts', desc: 'Next.js e-commerce storefront.', url: 'https://github.com/htet1996/nexushub-store', thumb: 'linear-gradient(135deg,#7c5cfc,#b07cff)', mark: '⌘' },
-    { name: 'ai-agency-fullstack', lang: 'TypeScript', cls: 'ts', desc: 'Full-stack AI agency with Next.js + Supabase.', url: 'https://github.com/htet1996/ai-agency-fullstack', thumb: 'linear-gradient(135deg,#3ecf8e,#4f8cff)', mark: '⛁' },
-    { name: 'Business-Bot', lang: 'Python', cls: 'py', desc: 'Business automation Telegram bot.', url: 'https://github.com/htet1996/Business-Bot', thumb: 'linear-gradient(135deg,#4582ec,#2bb0e0)', mark: '⌬' },
-    { name: 'Finance-Bot', lang: 'Python', cls: 'py', desc: 'Financial tracking & analytics Telegram bot.', url: 'https://github.com/htet1996/Finance-Bot', thumb: 'linear-gradient(135deg,#f7931a,#ffc04d)', mark: '₿' },
-    { name: 'vpn-store', lang: 'Python', cls: 'py', desc: 'VPN service store & management app.', url: 'https://github.com/htet1996/vpn-store', thumb: 'linear-gradient(135deg,#16a34a,#4ade80)', mark: '⛨' }
-  ];
-  const arrowSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>';
-  function renderProjects() {
-    const g = $('#projGrid');
-    g.innerHTML = projects.map((p, i) => `
-      <a class="proj-card reveal d${(i % 4) + 1}" href="${p.url}" target="_blank" rel="noopener">
-        <div class="proj-thumb" style="--thumb:${p.thumb}">
-          <span class="pt-lang">${p.lang}</span>
-          <span class="pt-mark">${p.mark}</span>
+                  <div class="dev-trans">
+                    <span class="hl">အစည်းအဝေး မှတ်တမ်း —</span> Q3 launch ကို သတ်မှတ်ပြီး၊ marketing team က content calendar ပြင်ဆင်မယ်…
+                  </div>
+                  <div class="dev-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                  </div>
+                  <div class="dev-notion">
+                    <div style="font-size:0.7rem;color:var(--dim);margin-bottom:6px">📄 Notion · Meeting Minutes</div>
+                    <div style="color:var(--text)">✓ Q3 launch confirmed</div>
+                    <div style="color:var(--text)">✓ Marketing prepares content calendar</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="proj-name">${p.name}</div>
-        <div class="proj-desc">${p.desc}</div>
-        <span class="proj-link">View on GitHub ${arrowSvg}</span>
-      </a>`).join('');
-  }
-  renderProjects();
+      </div>
+    </section>
 
-  /* ---------- 7. SKILLS DATA + RENDER ---------- */
-  const skillCats = [
-    { t: 'Frontend', items: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Responsive Design'] },
-    { t: 'Bots & Backend', items: ['Python', 'Telegram Bot API', 'SQLite', 'Node.js', 'REST APIs'] },
-    { t: 'Database & Cloud', items: ['Supabase', 'Vercel'] },
-    { t: 'AI', items: ['Gemini AI', 'Notion API'] },
-    { t: 'Design', items: ['UI/UX Design', 'Figma'] },
-    { t: 'IT & Infrastructure', items: ['Network Administration', 'Technical Support', 'Hardware Troubleshooting', 'CCTV Systems'] },
-    { t: 'Tools & Languages', items: ['Git', 'English', 'Burmese'] }
-  ];
-  const boltSvg = '<svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg>';
-  function renderSkills() {
-    $('#skillCats').innerHTML = skillCats.map((c, i) => `
-      <div class="skill-cat reveal d${(i % 4) + 1}">
-        <h4>${boltSvg}${c.t}</h4>
-        <div class="skill-tags">${c.items.map(s => `<span>${s}</span>`).join('')}</div>
-      </div>`).join('');
-  }
-  renderSkills();
+    <!-- ============ CV / RESUME ============ -->
+    <section id="cv">
+      <div class="wrap">
+        <div class="eyebrow reveal">// resume</div>
+        <h2 class="h2 reveal d1" style="margin-bottom:34px"><span class="grad-text">CV</span> &amp; Experience</h2>
+        <div class="cv-card reveal d2">
+          <div class="cv-inner">
+            <div class="cv-left">
+              <div class="cv-avatar">
+                <img src="assets/profile.jpg" alt="Htet Min Paing" loading="lazy"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <span class="cv-initials" style="display:none">N</span>
+              </div>
+              <h3 class="cv-name">Htet Min Paing</h3>
+              <div class="cv-role">Full Stack Developer</div>
+              <div class="cv-company">Freelance · Yangon, Myanmar</div>
+              <div class="cv-links">
+                <a href="https://github.com/htet1996" target="_blank" rel="noopener" class="btn" style="padding:8px 14px;font-size:0.78rem">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  GitHub
+                </a>
+                <a href="https://mm.linkedin.com/in/htetminpaing-it" target="_blank" rel="noopener" class="btn" style="padding:8px 14px;font-size:0.78rem">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  LinkedIn
+                </a>
+                <a href="resume.html" target="_blank" class="btn" style="padding:8px 14px;font-size:0.78rem">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                  Download Resume
+                </a>
+              </div>
+            </div>
+            <div class="cv-right">
+              <div class="cv-section">
+                <h4>About</h4>
+                <p>Versatile IT professional with <strong>8+ years of hands-on experience</strong> in technical support, network configuration, and hardware troubleshooting. Recently transitioned into <strong>Frontend Development &amp; UI/UX Design</strong>. Currently building Telegram bot solutions using Python, SQLite, and modern web technologies — creating practical products for the Myanmar market. Passionate about blending technical support expertise with modern development to ship reliable, user-friendly software.</p>
+              </div>
+              <div class="cv-section">
+                <h4>Experience</h4>
+                <div class="cv-item">
+                  <div class="cv-item-title">Full Stack Developer</div>
+                  <div class="cv-item-sub">Freelance · Remote</div>
+                  <div class="cv-item-date">Sep 2025 — Present</div>
+                  <div class="cv-item-desc">Developing custom Telegram bot solutions using Python and SQLite. Built VPN Commerce Bot (business automation) and Finance &amp; Crypto Bot (financial tracking). Full ownership from design through deployment.</div>
+                </div>
+                <div class="cv-item">
+                  <div class="cv-item-title">IT Technician</div>
+                  <div class="cv-item-sub">HTOO Group of Companies · Yangon</div>
+                  <div class="cv-item-date">Dec 2022 — Apr 2024</div>
+                  <div class="cv-item-desc">Provided comprehensive IT support across the organization. Configured and maintained network infrastructure, resolved hardware/software issues, and supported enterprise-level systems at one of Myanmar's largest conglomerates.</div>
+                </div>
+                <div class="cv-item">
+                  <div class="cv-item-title">Computer Service Technician</div>
+                  <div class="cv-item-sub">Citicom IT and Mobile · Yangon</div>
+                  <div class="cv-item-date">Aug 2019 — Oct 2022</div>
+                  <div class="cv-item-desc">Diagnosed and repaired hardware and software issues for clients. Built expertise in system configuration, customer support, and IT service delivery.</div>
+                </div>
+                <div class="cv-item">
+                  <div class="cv-item-title">CCTV Installation &amp; Configuration Specialist</div>
+                  <div class="cv-item-sub">NS CCTV and Networking Group · Yangon</div>
+                  <div class="cv-item-date">Nov 2016 — May 2019</div>
+                  <div class="cv-item-desc">Designed and deployed CCTV surveillance systems. Configured networking equipment and ensured reliable system integration for commercial clients.</div>
+                </div>
+                <div class="cv-item">
+                  <div class="cv-item-title">Sales &amp; Marketing Executive</div>
+                  <div class="cv-item-sub">Shwin Chan Trading Co., Ltd. · Yangon</div>
+                  <div class="cv-item-date">May 2014 — Sep 2016</div>
+                  <div class="cv-item-desc">Managed sales operations and marketing initiatives. Developed customer relationships and contributed to business growth strategies.</div>
+                </div>
+              </div>
+              <div class="cv-section">
+                <h4>Education</h4>
+                <div class="cv-item">
+                  <div class="cv-item-title">West University of Yangon</div>
+                  <div class="cv-item-sub">Information Technology</div>
+                  <div class="cv-item-date">2016 — 2020</div>
+                </div>
+              </div>
+              <div class="cv-section">
+                <h4>Tech Stack</h4>
+                <div class="feat-stack" style="margin-top:0">
+                  <span class="chip">React.js</span><span class="chip">Python</span><span class="chip">SQLite</span>
+                  <span class="chip">Telegram Bot API</span><span class="chip">UI/UX Design</span><span class="chip">Next.js</span>
+                  <span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Supabase</span>
+                  <span class="chip">Gemini AI</span><span class="chip">Notion API</span><span class="chip">Git</span>
+                  <span class="chip">Network Administration</span><span class="chip">Technical Support</span><span class="chip">Hardware Troubleshooting</span>
+                </div>
+              </div>
+              <div class="cv-section">
+                <h4>Key Projects</h4>
+                <div class="cv-item">
+                  <div class="cv-item-title">VPN Commerce Bot</div>
+                  <div class="cv-item-desc">Telegram bot for VPN service commerce — automated purchasing, user management, and payment integration. Built with Python + SQLite.</div>
+                </div>
+                <div class="cv-item">
+                  <div class="cv-item-title">Finance &amp; Crypto Bot</div>
+                  <div class="cv-item-desc">Telegram-based financial tracking and cryptocurrency monitoring bot. Real-time data, portfolio tracking, and Myanmar market focused.</div>
+                </div>
+                <div class="cv-item">
+                  <div class="cv-item-title">SagaNote — AI Voice → Notion</div>
+                  <div class="cv-item-desc">Record meetings, get AI transcripts translated to Burmese, and auto-save to Notion. Built with Next.js, Supabase, Gemini AI.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  /* ---------- 8. GITHUB CONTRIBUTION GRAPH (real data + fallback) ---------- */
-  (function contrib() {
-    const el = $('#contrib'); if (!el) return;
-    const GH_USER = 'htet1996';
-    const lvlClass = l => (l >= 4 ? 'l4' : l === 3 ? 'l3' : l === 2 ? 'l2' : l === 1 ? 'l1' : '');
+    <!-- ============ PROJECTS GRID ============ -->
+    <section id="projects">
+      <div class="wrap">
+        <div class="eyebrow reveal">// open source</div>
+        <h2 class="h2 reveal d1" style="margin-bottom:14px">More <span class="grad-text">Projects</span></h2>
+        <p class="lead reveal d1" style="margin-bottom:40px">A selection of work from across the stack — web, mobile, and backend.</p>
+        <div class="proj-grid" id="projGrid"><!-- cards injected by JS --></div>
+      </div>
+    </section>
 
-    function renderFallback() {
-      // graceful, clearly-labelled placeholder if the API can't be reached
-      let html = '';
-      for (let i = 0; i < 364; i++) {
-        const r = Math.random();
-        let lvl = 0;
-        if (r > 0.92) lvl = 4; else if (r > 0.82) lvl = 3;
-        else if (r > 0.68) lvl = 2; else if (r > 0.5) lvl = 1;
-        html += `<i class="${lvlClass(lvl)}"></i>`;
-      }
-      el.innerHTML = html;
-    }
+    <!-- ============ GITHUB ACTIVITY ============ -->
+    <section id="github">
+      <div class="wrap">
+        <div class="eyebrow reveal">// github activity</div>
+        <h2 class="h2 reveal d1" style="margin-bottom:36px">Always <span class="grad-text">building</span></h2>
+        <div class="gh-grid">
+          <div class="gh-panel reveal d1">
+            <h3>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C6.5 0 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.5-.3s1.7.1 2.5.3c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5C19.1 20.2 22 16.4 22 12c0-5.5-4.5-10-10-10z"/></svg>
+              contributions · last year
+            </h3>
+            <div class="contrib" id="contrib"></div>
+            <div class="contrib-legend">less <i style="background:rgba(255,255,255,0.04)"></i><i class="l1" style="background:rgba(124,92,252,0.25)"></i><i class="l2" style="background:rgba(124,92,252,0.45)"></i><i class="l3" style="background:rgba(124,92,252,0.7)"></i><i class="l4" style="background:var(--accent2)"></i> more</div>
+            <div id="contribTotal" style="font-family:var(--mono);font-size:0.72rem;color:var(--dim);margin-top:10px"></div>
+          </div>
+          <div class="gh-panel reveal d2">
+            <h3>recent activity</h3>
+            <div id="ghFeed">
+              <div class="feed-item">
+                <div class="feed-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg></div>
+                <div><div class="feed-name">Loading…</div><div class="feed-meta">fetching latest from GitHub</div></div>
+              </div>
+            </div>
+            <a href="https://github.com/htet1996" target="_blank" rel="noopener" class="btn" style="margin-top:18px;width:100%;justify-content:center">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C6.5 0 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.5-.3s1.7.1 2.5.3c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5C19.1 20.2 22 16.4 22 12c0-5.5-4.5-10-10-10z"/></svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    function renderReal(days) {
-      // take the most recent 364 days, oldest → newest (grid fills column by column)
-      const recent = days.slice(-364);
-      el.innerHTML = recent.map(d =>
-        `<i class="${lvlClass(d.level)}" title="${d.date}: ${d.count} contribution${d.count === 1 ? '' : 's'}"></i>`
-      ).join('');
-      const total = recent.reduce((s, d) => s + (d.count || 0), 0);
-      const totalEl = $('#contribTotal');
-      if (totalEl) totalEl.textContent = total.toLocaleString() + ' contributions in the last year';
-    }
+    <!-- ============ SKILLS ============ -->
+    <section id="skills">
+      <div class="wrap">
+        <div class="eyebrow reveal">// tech stack</div>
+        <h2 class="h2 reveal d1" style="margin-bottom:36px">Skills & <span class="grad-text">Tools</span></h2>
+        <div class="skill-cats" id="skillCats"><!-- injected --></div>
+      </div>
+    </section>
 
-    fetch(`https://github-contributions-api.jogruber.de/v4/${GH_USER}?y=last`)
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
-      .then(data => {
-        if (data && Array.isArray(data.contributions) && data.contributions.length) {
-          renderReal(data.contributions);
-        } else { renderFallback(); }
-      })
-      .catch(() => renderFallback());
-  })();
+    <!-- ============ CONTACT ============ -->
+    <section id="testimonials" class="reveal">
+      <div class="wrap">
+        <div class="eyebrow">// testimonials</div>
+        <h2 class="h2" style="margin-bottom:34px">What <span class="grad-text">People Say</span></h2>
+        <div class="test-grid">
+          <div class="test-card">
+            <div class="quote">"Nikko is an exceptional developer who blends technical rigor with a keen eye for design. SagaNote is a game-changer for our meeting workflows."</div>
+            <div class="author">Alex Rivers</div>
+            <div class="role">Product Manager @ TechFlow</div>
+          </div>
+          <div class="test-card">
+            <div class="quote">"Rarely do you find a developer who understands both low-level networking and high-level UX. His ability to ship practical products is impressive."</div>
+            <div class="author">Myanmar Dev Community</div>
+            <div class="role">Lead Reviewer</div>
+          </div>
+          <div class="test-card">
+            <div class="quote">"The attention to detail in ZayFlow is stunning. It's not just a tool; it's a carefully crafted experience for small business owners."</div>
+            <div class="author">U Zaw Myint</div>
+            <div class="role">Business Owner</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  /* ---------- 8b. GITHUB RECENT ACTIVITY (real events + fallback) ---------- */
-  (function ghFeed() {
-    const el = $('#ghFeed'); if (!el) return;
-    const GH_USER = 'htet1996';
-    const repoSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>';
+    <section id="contact">
+      <div class="wrap">
+        <div class="eyebrow reveal" style="text-align:center;display:block">// contact</div>
+        <h2 class="h2 reveal d1" style="text-align:center;margin-bottom:32px">Let's <span class="grad-text">build</span> something great</h2>
 
-    function ago(iso) {
-      const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
-      const u = [[31536000, 'year'], [2592000, 'month'], [604800, 'week'], [86400, 'day'], [3600, 'hour'], [60, 'minute']];
-      for (const [sec, name] of u) { const n = Math.floor(s / sec); if (n >= 1) return n + ' ' + name + (n > 1 ? 's' : '') + ' ago'; }
-      return 'just now';
-    }
-    function describe(e) {
-      const repo = e.repo.name.split('/')[1] || e.repo.name;
-      let action = e.type.replace(/Event$/, '');
-      if (e.type === 'PushEvent') action = `Pushed ${e.payload.commits ? e.payload.commits.length : ''} commit${e.payload.commits && e.payload.commits.length === 1 ? '' : 's'} to ${e.payload.ref ? e.payload.ref.split('/').pop() : 'main'}`;
-      else if (e.type === 'CreateEvent') action = `Created ${e.payload.ref_type}`;
-      else if (e.type === 'WatchEvent') action = 'Starred';
-      else if (e.type === 'PullRequestEvent') action = `${e.payload.action} a pull request`;
-      else if (e.type === 'IssuesEvent') action = `${e.payload.action} an issue`;
-      else if (e.type === 'ForkEvent') action = 'Forked';
-      return { repo, meta: `${action} · ${ago(e.created_at)}`, url: 'https://github.com/' + e.repo.name };
-    }
-    function row(name, meta, url) {
-      return `<a class="feed-item" href="${url}" target="_blank" rel="noopener" style="text-decoration:none">
-        <div class="feed-ico">${repoSvg}</div>
-        <div><div class="feed-name">${name}</div><div class="feed-meta">${meta}</div></div>
-      </a>`;
-    }
-    function renderFallback() {
-      el.innerHTML =
-        row('SagaNote', 'AI Voice → Notion · flagship', 'https://github.com/htet1996/SagaNote') +
-        row('nexushub-store', 'Next.js e-commerce', 'https://github.com/htet1996/nexushub-store') +
-        row('Finance-Bot', 'Crypto tracking bot', 'https://github.com/htet1996/Finance-Bot');
-    }
+        <!-- business card -->
+        <div class="bizcard reveal d2">
+          <div class="bizcard-photo">
+            <span class="bc-initials">N</span>
+            <img src="assets/profile.jpg" alt="Htet Min Paing" loading="lazy"
+                 onerror="this.style.display='none';this.previousElementSibling.style.display='block'" />
+          </div>
+          <div class="bizcard-info">
+            <div class="bc-name">Htet Min Paing</div>
+            <div class="bc-role">Full Stack Developer · Nikko</div>
+            <div class="bc-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+959970980251">09 970 980 251</a>
+            </div>
+            <div class="bc-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:htetminpaing.96@gmail.com">htetminpaing.96@gmail.com</a>
+            </div>
+            <div class="bc-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Yangon, Myanmar 🇲🇲</span>
+            </div>
+          </div>
+        </div>
+        <div class="terminal contact-term reveal d2">
+          <div class="term-bar">
+            <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+            <span class="term-title">nikko@neo: ~/contact</span>
+          </div>
+          <div class="term-body contact-body">
+            <div class="term-line"><span class="term-prompt">$</span> <span class="c">cat</span> contact.json</div>
+            <div class="term-line">{</div>
+            <div class="term-line">  <span class="c">"name"</span>: <span class="e">"Htet Min Paing (Nikko)"</span>,</div>
+            <div class="term-line">  <span class="c">"role"</span>: <span class="e">"Full Stack Developer"</span>,</div>
+            <div class="term-line">  <span class="c">"email"</span>: <span class="e">"htetminpaing.96@gmail.com"</span>,</div>
+            <div class="term-line">  <span class="c">"phone"</span>: <span class="e">"09 970 980 251"</span>,</div>
+            <div class="term-line">  <span class="c">"location"</span>: <span class="e">"Myanmar 🇲🇲"</span>,</div>
+            <div class="term-line">  <span class="c">"status"</span>: <span class="w">"open to opportunities"</span></div>
+            <div class="term-line">}</div>
+            <div class="term-line"><span class="term-prompt">$</span> <span class="cursor-blink"></span></div>
+          </div>
+        </div>
+        <form class="contact-form reveal d3" id="contactForm">
+          <div>
+            <label for="cfName">Name</label>
+            <input id="cfName" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="cfEmail">Email</label>
+            <input id="cfEmail" name="email" type="email" placeholder="you@company.com" required />
+          </div>
+          <div class="full">
+            <label for="cfMsg">Message</label>
+            <textarea id="cfMsg" name="message" placeholder="Tell me about the role or project…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary full form-submit">
+            Send message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </form>
+        <div class="contact-links reveal d3">
+          <a href="#" class="btn btn-primary" id="emailBtn" onclick="copyEmail(event)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18v14H3zM3 7l9 6 9-6"/></svg>
+            <span id="emailLabel">Email me</span>
+          </a>
+          <div id="copyToast" style="position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--accent);color:#000;padding:10px 24px;border-radius:8px;font-family:var(--mono);font-size:0.85rem;opacity:0;transition:opacity .3s;pointer-events:none;z-index:99999;">📋 Copied to clipboard!</div>
+          <a href="https://github.com/htet1996" target="_blank" rel="noopener" class="btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C6.5 0 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.5-.3s1.7.1 2.5.3c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5C19.1 20.2 22 16.4 22 12c0-5.5-4.5-10-10-10z"/></svg>
+            GitHub
+          </a>
+          <a href="https://mm.linkedin.com/in/htetminpaing-it?trk=people-guest_people_search-card" target="_blank" rel="noopener" class="btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
 
-    fetch(`https://api.github.com/users/${GH_USER}/events/public?per_page=12`)
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
-      .then(events => {
-        if (!Array.isArray(events) || !events.length) return renderFallback();
-        const seen = new Set(), rows = [];
-        for (const e of events) {
-          const d = describe(e);
-          const key = d.repo + d.meta;
-          if (seen.has(d.repo)) continue;      // one row per repo, most recent
-          seen.add(d.repo); rows.push(row(d.repo, d.meta, d.url));
-          if (rows.length >= 4) break;
-        }
-        el.innerHTML = rows.length ? rows.join('') : '';
-        if (!rows.length) renderFallback();
-      })
-      .catch(() => renderFallback());
-  })();
+    <div class="modal-overlay" id="caseModal">
+      <div class="modal-box">
+        <div class="modal-head">
+          <h3 id="modalTitle">Project Detail</h3>
+          <button class="modal-close" onclick="closeCaseStudy()">&times;</button>
+        </div>
+        <div class="modal-body" id="modalContent"></div>
+        <div class="case-footer">
+          <a href="#" id="modalLink" target="_blank" class="btn btn-primary">View on GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </main>
 
-  /* ---------- 9. SCROLL REVEAL ---------- */
-  function revealObserve() {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
-        if (en.isIntersecting) {
-          en.target.classList.add('in');
-          // animate skill bars
-          if (en.target.id === 'skillbars') {
-            $$('.fill', en.target).forEach(f => f.style.width = f.dataset.w);
-          }
-          io.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    $$('.reveal').forEach(e => io.observe(e));
-    const sb = $('#skillbars'); if (sb) io.observe(sb);
-  }
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-brand">Nikko</div>
+          <div class="foot-tag">
+            Built with ❤️ for Myanmar
+          </div>
+          <div class="foot-copy" style="margin-top:6px">© 2026 Htet Min Paing</div>
+        </div>
+        <button class="to-top" id="toTop" aria-label="back to top">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
 
-  /* ---------- 10. NAV: scroll state, progress bar, active section ---------- */
-  const nav = $('#nav');
-  const progress = $('#scrollProgress');
-  const navAnchors = $$('.nav-links a[href^="#"]');
-  const sections = navAnchors.map(a => $(a.getAttribute('href'))).filter(Boolean);
-  let ticking = false;
-  function onScroll() {
-    const y = window.scrollY;
-    nav.classList.toggle('scrolled', y > 40);
-    // progress
-    const docH = document.documentElement.scrollHeight - window.innerHeight;
-    if (progress) progress.style.width = (docH > 0 ? (y / docH) * 100 : 0) + '%';
-    // active section (the last one whose top has passed ~40% of the viewport)
-    const mark = y + window.innerHeight * 0.4;
-    let current = sections[0];
-    for (const s of sections) { if (s.offsetTop <= mark) current = s; }
-    navAnchors.forEach(a => a.classList.toggle('active', current && a.getAttribute('href') === '#' + current.id));
-  }
-  window.addEventListener('scroll', () => {
-    if (!ticking) { ticking = true; requestAnimationFrame(() => { onScroll(); ticking = false; }); }
-  });
-  onScroll();
-  const burger = $('#burger'), navLinks = $('#navLinks');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open'); navLinks.classList.toggle('open'); document.body.classList.toggle('nav-open');
-  });
-  $$('[data-link]').forEach(a => a.addEventListener('click', () => {
-    burger.classList.remove('open'); navLinks.classList.remove('open'); document.body.classList.remove('nav-open');
-  }));
+  <!-- ============ SCRIPTS ============ -->
+  <script src="js/script.js"></script>
 
-  /* ---------- 11. CONTACT FORM (opens email client, no backend) ---------- */
-  (function contactForm() {
-    const form = $('#contactForm'); if (!form) return;
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const name = $('#cfName').value.trim();
-      const email = $('#cfEmail').value.trim();
-      const msg = $('#cfMsg').value.trim();
-      if (!name || !email || !msg) return;
-      const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
-      const body = encodeURIComponent(`${msg}\n\n— ${name}\n${email}`);
-      window.location.href = `mailto:htetminpaing.96@gmail.com?subject=${subject}&body=${body}`;
-      const btn = $('.form-submit', form);
-      const original = btn.innerHTML;
-      btn.innerHTML = 'Opening your email app…';
-      setTimeout(() => { btn.innerHTML = original; }, 3000);
-    });
-  })();
-
-  /* ---------- 11a. COPY EMAIL TO CLIPBOARD ---------- */
-  window.copyEmail = function(e) {
-    e.preventDefault();
-    navigator.clipboard.writeText('htetminpaing.96@gmail.com').then(() => {
-      const toast = $('#copyToast');
-      const label = $('#emailLabel');
-      label.textContent = 'Copied!';
-      toast.style.opacity = '1';
-      setTimeout(() => {
-        toast.style.opacity = '0';
-        label.textContent = 'Email me';
-      }, 2000);
-    }).catch(() => {
-      // fallback: select text
-      const ta = document.createElement('textarea');
-      ta.value = 'htetminpaing.96@gmail.com';
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      const label = $('#emailLabel');
-      label.textContent = 'Copied!';
-      setTimeout(() => { label.textContent = 'Email me'; }, 2000);
-    });
-  };
-
-  /* ---------- 12. BACK TO TOP ---------- */
-  $('#toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  /* ---------- 13. PULL-CORD → reveal projects ---------- */
-  (function pullCord() {
-    const wrap = $('#pullCord'); if (!wrap) return;
-    const inner = $('.cord-inner', wrap);
-    const knob = $('#cordKnob');
-    let dragging = false, startY = 0, pull = 0, moved = false;
-    const MAX = 150, THRESH = 80;
-    const setPull = v => { pull = Math.max(0, Math.min(MAX, v)); wrap.style.setProperty('--pull', pull + 'px'); };
-    const getY = e => (e.touches && e.touches[0] ? e.touches[0].clientY : e.clientY);
-    function sway() { if (!inner) return; inner.classList.remove('swaying'); void inner.offsetWidth; inner.classList.add('swaying'); }
-    function down(e) {
-      if (e.type === 'mousedown') e.preventDefault();
-      dragging = true; moved = false; startY = getY(e); wrap.classList.add('grabbing');
-    }
-    function move(e) {
-      if (!dragging) return;
-      if (e.cancelable) e.preventDefault();   // stop the page scrolling while you pull (mobile)
-      const d = getY(e) - startY; if (d > 4) moved = true; setPull(d);
-    }
-    function up() {
-      if (!dragging) return; dragging = false; wrap.classList.remove('grabbing');
-      if (pull >= THRESH) reveal();
-      setPull(0);                       // elastic recoil back up
-      sway();                           // swing left-right, then settle
-    }
-    function reveal() {
-      const ps = $('#projects'); if (!ps) return;
-      ps.scrollIntoView({ behavior: 'smooth' });
-      ps.classList.remove('revealed'); void ps.offsetWidth; ps.classList.add('revealed');
-    }
-    knob.addEventListener('mousedown', down);
-    window.addEventListener('mousemove', move);
-    window.addEventListener('mouseup', up);
-    knob.addEventListener('touchstart', down, { passive: false });
-    window.addEventListener('touchmove', move, { passive: false });
-    window.addEventListener('touchend', up);
-    knob.addEventListener('click', e => { e.preventDefault(); if (!moved) reveal(); });
-    // only show at the top — tuck it away once scrolled past the hero
-    const tuck = () => wrap.classList.toggle('tucked', window.scrollY > window.innerHeight * 0.5);
-    window.addEventListener('scroll', tuck, { passive: true });
-    tuck();
-    setTimeout(sway, 1900);             // initial swing once the boot screen clears
-  })();
-
-})();
-</script>
-
-<!-- ============ VERCEL WEB ANALYTICS ============ -->
-<!-- Enable "Web Analytics" in your Vercel project dashboard for this to collect data. -->
-<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-<script defer src="/_vercel/insights/script.js"></script>
-
+  <!-- ============ VERCEL WEB ANALYTICS ============ -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

@@ -1,449 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Htet Min Paing — Resume</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #f4f6f9;
-    color: #1a1c2e;
-    line-height: 1.5;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-  }
-  .page {
-    max-width: 900px;
-    margin: 40px auto;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0,0,0,.08);
-    overflow: hidden;
-  }
-  @media print {
-    body { background: #fff; }
-    .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; }
-    .no-print { display: none !important; }
-  }
-  
-  .header {
-    background: linear-gradient(135deg, #0b0d15 0%, #161e2e 100%);
-    color: #fff;
-    padding: 44px 48px 38px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-  }
-  .header-left h1 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 4px;
-  }
-  .header-left .title {
-    font-size: 0.95rem;
-    color: #6b9aff;
-    font-weight: 500;
-    margin-bottom: 14px;
-  }
-  .header-left .tagline {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,.55);
-    max-width: 500px;
-    line-height: 1.6;
-  }
-  .header-right {
-    text-align: right;
-    flex-shrink: 0;
-  }
-  .header-right .item {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,.65);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: flex-end;
-    margin-bottom: 6px;
-  }
-  .header-right .item:last-child { margin-bottom: 0; }
-  .header-right .item a { color: #6b9aff; text-decoration: none; }
-  .header-right .item a:hover { text-decoration: underline; }
-  .icon { width: 14px; height: 14px; flex-shrink: 0; }
-  .location { font-size: 0.82rem; color: rgba(255,255,255,.5); margin-top: 12px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume - Htet Min Paing (Nikko)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Myanmar:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a1c2e;
+      --accent: #4f8cff;
+      --text-main: #2d3436;
+      --text-muted: #636e72;
+      --border: #dfe6e9;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      line-height: 1.5;
+      background: #f5f7fa;
+      padding: 40px 0;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 20mm;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    @media print {
+      body { background: none; padding: 0; }
+      .page { box-shadow: none; margin: 0; width: 100%; }
+      .no-print { display: none; }
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+    .name-block h1 {
+      font-size: 28pt;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .name-block p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12pt;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .contact-block {
+      text-align: right;
+      font-size: 10pt;
+      color: var(--text-muted);
+    }
+    .contact-block div { margin-bottom: 3px; }
 
-  .body {
-    padding: 40px 48px;
-    display: grid;
-    grid-template-columns: 1.2fr 2fr;
-    gap: 32px;
-  }
-  @media (max-width: 720px) {
-    .header { flex-direction: column; padding: 32px 24px; }
-    .header-right { text-align: left; width: 100%; }
-    .header-right .item { justify-content: flex-start; }
-    .body { grid-template-columns: 1fr; padding: 24px; }
-  }
+    section { margin-bottom: 25px; }
+    h2 {
+      font-size: 14pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-  .sidebar h3, .main h3 {
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #6b9aff;
-    font-weight: 700;
-    margin-bottom: 14px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #eef2f7;
-  }
-  .sidebar-content { margin-bottom: 28px; }
-  .sidebar-content:last-child { margin-bottom: 0; }
+    .entry { margin-bottom: 18px; }
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 11pt;
+      margin-bottom: 4px;
+    }
+    .entry-sub {
+      display: flex;
+      justify-content: space-between;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 10pt;
+      margin-bottom: 8px;
+    }
+    .entry-desc {
+      font-size: 10pt;
+      color: var(--text-main);
+      text-align: justify;
+    }
+    .entry-desc ul {
+      margin-left: 18px;
+      margin-top: 6px;
+    }
+    .entry-desc li {
+      margin-bottom: 4px;
+    }
 
-  .skill-group { margin-bottom: 14px; }
-  .skill-group:last-child { margin-bottom: 0; }
-  .skill-group .sg-title { font-size: 0.72rem; font-weight: 600; color: #4a4c62; margin-bottom: 6px; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-  .skill-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    padding: 3px 9px;
-    border-radius: 5px;
-    background: #f0f4ff;
-    color: #3b6fd4;
-    border: 1px solid #dce6f7;
-  }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .skill-cat { margin-bottom: 10px; }
+    .skill-cat strong {
+      font-size: 10pt;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .skill-list {
+      font-size: 9.5pt;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .skill-tag {
+      background: #f0f2f5;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
 
-  .edu-item { margin-bottom: 14px; }
-  .edu-item:last-child { margin-bottom: 0; }
-  .edu-item .ei-name { font-weight: 600; font-size: 0.85rem; }
-  .edu-item .ei-degree { font-size: 0.78rem; color: #6b7280; }
-  .edu-item .ei-year { font-family: 'JetBrains Mono', monospace; font-size: 0.67rem; color: #9ca3af; margin-top: 2px; }
-
-  .exp-item {
-    margin-bottom: 22px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid #f0f2f8;
-  }
-  .exp-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .exp-item .ei-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 4px;
-  }
-  .exp-item .ei-role { font-weight: 700; font-size: 0.95rem; }
-  .exp-item .ei-company { color: #6b9aff; font-weight: 500; }
-  .exp-item .ei-date {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.67rem;
-    color: #9ca3af;
-    white-space: nowrap;
-    margin-top: 2px;
-  }
-  .exp-item .ei-desc {
-    font-size: 0.82rem;
-    color: #4b5563;
-    line-height: 1.6;
-    margin-top: 6px;
-  }
-  .exp-item ul {
-    list-style: none;
-    margin-top: 8px;
-  }
-  .exp-item ul li {
-    font-size: 0.8rem;
-    color: #4b5563;
-    padding-left: 14px;
-    position: relative;
-    margin-bottom: 4px;
-    line-height: 1.5;
-  }
-  .exp-item ul li::before {
-    content: '';
-    position: absolute; left: 0; top: 9px;
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #6b9aff;
-  }
-
-  .proj-item {
-    margin-bottom: 16px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #f0f2f8;
-  }
-  .proj-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .proj-item .pi-name { font-weight: 600; font-size: 0.88rem; }
-  .proj-item .pi-desc { font-size: 0.8rem; color: #4b5563; margin-top: 3px; }
-  .proj-item .pi-stack { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
-  .proj-item .pi-stack span {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
-    padding: 2px 7px;
-    border-radius: 4px;
-    background: #f3f4f6;
-    color: #6b7280;
-  }
-
-  .summary {
-    margin-bottom: 24px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #f0f2f8;
-  }
-  .summary p {
-    font-size: 0.85rem;
-    color: #4b5563;
-    line-height: 1.7;
-  }
-
-  .no-print { text-align: center; padding: 20px 0; }
-  .no-print button {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    padding: 10px 28px;
-    border-radius: 8px;
-    border: none;
-    background: #1a1c2e;
-    color: #fff;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background .2s;
-  }
-  .no-print button:hover { background: #2d2f42; }
-</style>
+    .print-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
 <body>
+  <button class="print-btn no-print" onclick="window.print()">Download as PDF</button>
 
-<div class="page">
-
-  <div class="header">
-    <div class="header-left">
-      <h1>Htet Min Paing</h1>
-      <div class="title">Full Stack Developer · IT Support Specialist · UI/UX Designer</div>
-      <div class="tagline">Versatile IT professional with 8+ years spanning technical support, network configuration, and hardware troubleshooting — now expanding into Frontend Development and UI/UX Design. Building real products for the Myanmar market.</div>
-      <div class="location">📍 Yangon, Myanmar</div>
-    </div>
-    <div class="header-right">
-      <div class="item">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="#6b9aff"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11 11 0 0 1 6 0C16.5 2.8 17.5 3 17.5 3c.6 1.7.3 3 .1 3.3.7.8 1.2 1.9 1.2 3.2 0 4.4-2.8 5.4-5.5 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg></span>
-        <a href="https://github.com/htet1996" target="_blank">github.com/htet1996</a>
+  <div class="page">
+    <header>
+      <div class="name-block">
+        <h1>Htet Min Paing</h1>
+        <p>Full Stack Developer | AI Product Engineer</p>
       </div>
-      <div class="item">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="#6b9aff"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.3A1.8 1.8 0 1 1 8.3 6.5a1.8 1.8 0 0 1-1.8 1.8zM19 19h-3v-4.3c0-1-.5-1.6-1.3-1.6s-1.1.5-1.1 1.3v4.6h-3V10h3v1.3a3 3 0 0 1 2.4-1.3c1.9 0 3 1.3 3 3.8z"/></svg></span>
-        <a href="https://mm.linkedin.com/in/htetminpaing-it" target="_blank">linkedin.com/in/htetminpaing-it</a>
+      <div class="contact-block">
+        <div>📧 htetminpaing.96@gmail.com</div>
+        <div>📱 +95 9 970 980 251</div>
+        <div>📍 Yangon, Myanmar</div>
+        <div>🔗 github.com/htet1996</div>
       </div>
-      <div class="item">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-        htetminpaing.96@gmail.com
+    </header>
+
+    <section>
+      <h2>Professional Summary</h2>
+      <div class="entry-desc">
+        Versatile Software Engineer with a unique background combining 8+ years of IT infrastructure expertise with modern full-stack development. Specializing in building practical, high-impact AI applications and offline-first systems tailored for the Myanmar market. Proven track record of shipping products from initial concept to deployment, blending technical depth with a strong focus on user-centric design.
       </div>
-      <div class="item">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6b9aff" stroke-width="2" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-        09 970 980 251
+    </section>
+
+    <section>
+      <h2>Technical Experience</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span>Full Stack Developer (Freelance)</span>
+          <span>Sep 2025 — Present</span>
+        </div>
+        <div class="entry-sub">
+          <span>Remote / Yangon</span>
+          <span>TypeScript, Python, Supabase, Gemini AI</span>
+        </div>
+        <div class="entry-desc">
+          <ul>
+            <li>Designed and deployed <b>SagaNote</b>, an AI-powered voice-to-text platform that automates meeting minutes for Burmese teams, reducing documentation time by approximately 80%.</li>
+            <li>Architected <b>ZayFlow</b>, an offline-first PWA for retail business management using IndexedDB (Dexie.js) to ensure 100% availability in low-connectivity areas.</li>
+            <li>Developed a suite of high-utility Telegram bots for VPN commerce and financial tracking, implementing secure payment flows and automated user management.</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="body">
+      <div class="entry">
+        <div class="entry-head">
+          <span>IT Technician</span>
+          <span>Dec 2022 — Apr 2024</span>
+        </div>
+        <div class="entry-sub">
+          <span>HTOO Group of Companies, Yangon</span>
+          <span>Network Infrastructure, Enterprise Support</span>
+        </div>
+        <div class="entry-desc">
+          <ul>
+            <li>Managed and optimized network infrastructure for one of Myanmar's largest conglomerates, ensuring high availability for critical business operations.</li>
+            <li>Resolved complex hardware and software failures across diverse enterprise systems, reducing downtime through proactive maintenance.</li>
+            <li>Streamlined internal IT support workflows, improving response times and resolution rates for organization-wide technical issues.</li>
+          </ul>
+        </div>
+      </div>
 
-    <div class="sidebar">
+      <div class="entry">
+        <div class="entry-head">
+          <span>Computer Service Technician</span>
+          <span>Aug 2019 — Oct 2022</span>
+        </div>
+        <div class="entry-sub">
+          <span>Citicom IT and Mobile, Yangon</span>
+          <span>Hardware Diagnostics, System Configuration</span>
+        </div>
+        <div class="entry-desc">
+          <ul>
+            <li>Diagnosed and repaired high-level hardware failures for a diverse client base, specializing in system recovery and configuration.</li>
+            <li>Consulted with clients to provide tailored hardware/software solutions, improving device longevity and performance.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-      <div class="sidebar-content">
-        <h3>Skills</h3>
-        <div class="skill-group">
-          <div class="sg-title">Development</div>
-          <div class="skill-tags">
-            <span class="skill-tag">React.js</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQLite</span>
-            <span class="skill-tag">Telegram Bot API</span>
+    <section>
+      <h2>Core Projects</h2>
+      <div class="entry">
+        <div class="entry-head">
+          <span>SagaNote — AI Voice-to-Notion SaaS</span>
+          <span>Next.js, Supabase, Gemini 2.5 Flash</span>
+        </div>
+        <div class="entry-desc">
+          Built a specialized pipeline for the Myanmar market to solve the "meeting gap." The system records voice, generates Burmese transcripts using LLMs, summarizes action items, and syncs them automatically to Notion.
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span>ZayFlow — Offline Business Suite</span>
+          <span>React, TypeScript, Dexie.js (IndexedDB)</span>
+        </div>
+        <div class="entry-desc">
+          Engineered a robust offline-first financial tool using a repository-pattern architecture. Enabled small businesses to track sales and debt without internet dependencies.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <strong>Frontend & Web</strong>
+          <div class="skill-list">
             <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">React</span>
             <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">PWA</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <strong>Backend & Database</strong>
+          <div class="skill-list">
             <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Python</span>
             <span class="skill-tag">Supabase</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">SQLite</span>
           </div>
         </div>
-        <div class="skill-group">
-          <div class="sg-title">Design</div>
-          <div class="skill-tags">
-            <span class="skill-tag">UI/UX Design</span>
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">Responsive Design</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="sg-title">IT &amp; Infrastructure</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Network Administration</span>
-            <span class="skill-tag">Technical Support</span>
-            <span class="skill-tag">Hardware Troubleshooting</span>
-            <span class="skill-tag">CCTV Systems</span>
-            <span class="skill-tag">System Configuration</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <div class="sg-title">Tools</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Git</span>
+        <div class="skill-cat">
+          <strong>AI & Integrations</strong>
+          <div class="skill-list">
             <span class="skill-tag">Gemini AI</span>
             <span class="skill-tag">Notion API</span>
-            <span class="skill-tag">Vercel</span>
+            <span class="skill-tag">Telegram Bot API</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <strong>Infrastructure</strong>
+          <div class="skill-list">
+            <span class="skill-tag">Network Admin</span>
+            <span class="skill-tag">Hardware Troubleshooting</span>
+            <span class="skill-tag">Git</span>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="sidebar-content">
-        <h3>Education</h3>
-        <div class="edu-item">
-          <div class="ei-name">West University of Yangon</div>
-          <div class="ei-degree">B.Sc. in Information Technology</div>
-          <div class="ei-year">2016 — 2020</div>
+    <section>
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="entry-head">
+          <span>West University of Yangon</span>
+          <span>2016 — 2020</span>
+        </div>
+        <div class="entry-sub">
+          <span>B.C.S. (Information Technology)</span>
         </div>
       </div>
-
-      <div class="sidebar-content">
-        <h3>Languages</h3>
-        <div class="skill-tags" style="display:flex;flex-direction:column;gap:6px">
-          <div style="display:flex;justify-content:space-between;width:100%;font-size:0.82rem">
-            <span style="font-weight:500">Burmese (Myanmar)</span>
-            <span style="color:#6b7280">Native</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;width:100%;font-size:0.82rem">
-            <span style="font-weight:500">English</span>
-            <span style="color:#6b7280">Professional Working</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="main">
-
-      <div class="summary">
-        <h3>Professional Summary</h3>
-        <p>IT professional with 8+ years of comprehensive experience spanning technical support, network administration, hardware troubleshooting, and CCTV systems — now actively transitioning into software development and UI/UX design. I combine deep operational expertise with a growing full-stack toolkit to build practical, user-focused products for the Myanmar market. Currently developing Telegram bot solutions (Python, SQLite) and modern web applications (Next.js, React, Supabase). Self-taught developer with a proven track record of shipping real products — from AI-powered Notion integrations to Telegram-based commerce and finance bots.</p>
-      </div>
-
-      <h3>Experience</h3>
-
-      <div class="exp-item">
-        <div class="ei-header">
-          <div>
-            <span class="ei-role">Full Stack Developer</span>
-            <span class="ei-company"> · Freelance</span>
-          </div>
-          <span class="ei-date">Sep 2025 – Present</span>
-        </div>
-        <div class="ei-desc">Building custom Telegram bot solutions for the Myanmar market.</div>
-        <ul>
-          <li>Developed VPN Commerce Bot — an automated Telegram-based VPN service commerce platform handling user management, payments, and provisioning.</li>
-          <li>Built Finance &amp; Crypto Bot — real-time financial tracking and cryptocurrency monitoring with portfolio management features.</li>
-          <li>Full ownership of product lifecycle: requirements gathering, architecture, development, deployment, and maintenance.</li>
-          <li>Python + SQLite backend with Telegram Bot API integration for both bots.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <div class="ei-header">
-          <div>
-            <span class="ei-role">IT Technician</span>
-            <span class="ei-company"> · HTOO Group of Companies</span>
-          </div>
-          <span class="ei-date">Dec 2022 – Apr 2024</span>
-        </div>
-        <div class="ei-desc">Provided comprehensive IT support at one of Myanmar's largest conglomerates.</div>
-        <ul>
-          <li>Delivered day-to-day technical support across the organization — troubleshooting hardware, software, and network issues.</li>
-          <li>Configured and maintained network infrastructure, ensuring reliable connectivity for enterprise operations.</li>
-          <li>Managed IT asset inventory, system upgrades, and maintenance schedules.</li>
-          <li>Supported end-users across multiple departments with diverse technical requirements.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <div class="ei-header">
-          <div>
-            <span class="ei-role">Computer Service Technician</span>
-            <span class="ei-company"> · Citicom IT and Mobile</span>
-          </div>
-          <span class="ei-date">Aug 2019 – Oct 2022</span>
-        </div>
-        <div class="ei-desc">Diagnosed, repaired, and maintained computer systems and mobile devices for clients.</div>
-        <ul>
-          <li>Performed hardware diagnostics and repairs on desktops, laptops, and mobile devices.</li>
-          <li>Installed and configured operating systems, software applications, and security tools.</li>
-          <li>Developed strong customer service skills through direct client interaction and support.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <div class="ei-header">
-          <div>
-            <span class="ei-role">CCTV Installation &amp; Configuration Specialist</span>
-            <span class="ei-company"> · NS CCTV and Networking Group</span>
-          </div>
-          <span class="ei-date">Nov 2016 – May 2019</span>
-        </div>
-        <div class="ei-desc">Designed, installed, and maintained CCTV surveillance systems for commercial clients.</div>
-        <ul>
-          <li>Planned and deployed CCTV systems tailored to client security requirements.</li>
-          <li>Configured networking equipment (routers, switches, DVRs/NVRs) for system integration.</li>
-          <li>Provided ongoing maintenance and troubleshooting for installed systems.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <div class="ei-header">
-          <div>
-            <span class="ei-role">Sales &amp; Marketing Executive</span>
-            <span class="ei-company"> · Shwin Chan Trading Co., Ltd.</span>
-          </div>
-          <span class="ei-date">May 2014 – Sep 2016</span>
-        </div>
-        <div class="ei-desc">Managed sales operations and marketing initiatives for a trading company.</div>
-        <ul>
-          <li>Developed customer relationships and managed B2B sales accounts.</li>
-          <li>Executed marketing campaigns to drive business growth and brand awareness.</li>
-          <li>Coordinated with suppliers and logistics partners to ensure timely delivery.</li>
-        </ul>
-      </div>
-
-      <h3>Key Projects</h3>
-
-      <div class="proj-item">
-        <div class="pi-name">VPN Commerce Bot</div>
-        <div class="pi-desc">Telegram-based VPN service commerce platform with automated purchasing, user management, and payment integration. Full-stack Python + SQLite solution deployed to production.</div>
-        <div class="pi-stack">
-          <span>Python</span><span>SQLite</span><span>Telegram Bot API</span>
-        </div>
-      </div>
-
-      <div class="proj-item">
-        <div class="pi-name">Finance &amp; Crypto Bot</div>
-        <div class="pi-desc">Financial tracking and cryptocurrency monitoring bot for Telegram. Real-time price data, portfolio tracking, and Myanmar market focused features.</div>
-        <div class="pi-stack">
-          <span>Python</span><span>SQLite</span><span>Telegram Bot API</span><span>REST APIs</span>
-        </div>
-      </div>
-
-      <div class="proj-item">
-        <div class="pi-name">SagaNote — AI Voice → Notion</div>
-        <div class="pi-desc">AI-powered voice transcription and meeting minutes platform. Records meetings, generates Burmese transcripts via Gemini AI, and auto-saves to Notion. Built as a SaaS product with MMK pricing.</div>
-        <div class="pi-stack">
-          <span>Next.js</span><span>Supabase</span><span>Gemini AI</span><span>Notion API</span><span>Vercel</span>
-        </div>
-      </div>
-
-    </div>
+    </section>
   </div>
-</div>
-
-<div class="no-print">
-  <button onclick="window.print()">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:8px"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-    Download / Print PDF
-  </button>
-  <p style="margin-top:10px; font-size:0.75rem; color:#9ca3af;">Save as PDF: File → Print → Save as PDF (or use the button above)</p>
-</div>
-
 </body>
 </html>
